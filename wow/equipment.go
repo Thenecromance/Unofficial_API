@@ -455,22 +455,22 @@ func (e Equipment) ToBNet() *model.Equipment {
 	return equip
 }
 
-func StringEquipmentSummary(ctx context.Context, name string, realm_slug string) (string, error) {
+func StringEquipmentSummary(ctx context.Context, name string, realmSlug string) (string, error) {
 	client := utils.NewRequest()
-	token := internal.TryToGetToken(name, realm_slug)
+	token := internal.TryToGetToken(name, realmSlug)
 	if token == "" {
-		summary := CNPlayerSummary(ctx, name, realm_slug)
+		summary := CNPlayerSummary(ctx, name, realmSlug)
 		if summary == nil {
 			return "", nil
 		}
-		token = internal.TryToGetToken(name, realm_slug)
+		token = internal.TryToGetToken(name, realmSlug)
 	}
 
-	return client.GET("https://webapi.blizzard.cn/wow-armory-server/api/do", "api", "equipment", "token", realm_slug)
+	return client.GET("https://webapi.blizzard.cn/wow-armory-server/api/do", "api", "equipment", "token", token)
 }
 
-func CNEquipmentSummary(ctx context.Context, name string, realm_slug string) *Equipment {
-	obj, err := StringEquipmentSummary(ctx, name, realm_slug)
+func CNEquipmentSummary(ctx context.Context, name string, realmSlug string) *Equipment {
+	obj, err := StringEquipmentSummary(ctx, name, realmSlug)
 	if err != nil {
 		return nil
 	}
@@ -482,8 +482,8 @@ func CNEquipmentSummary(ctx context.Context, name string, realm_slug string) *Eq
 	return equip
 }
 
-func BNetEquipmentSummary(ctx context.Context, name string, realm_slug string) *model.Equipment {
-	obj := CNEquipmentSummary(ctx, name, realm_slug)
+func BNetEquipmentSummary(ctx context.Context, name string, realmSlug string) *model.Equipment {
+	obj := CNEquipmentSummary(ctx, name, realmSlug)
 	if obj == nil {
 		return nil
 	}

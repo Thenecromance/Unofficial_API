@@ -8,7 +8,7 @@ func init() {
 	cache = utils.New(1 << 20)
 }
 
-func TryToGetToken(name, slug string) string {
+func TryToGetToken(slug, name string) string {
 	token, ok := cache.Get(name + slug)
 	if ok {
 		return token.(string)
