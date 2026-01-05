@@ -1,0 +1,5 @@
+package global
+
+var (
+	cookie = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAzODEzNjM4LCJiYXR0bGVfdGFnIjoiVGhlbmVjcm9tYW5jIzUxNzA2IiwiZW1haWwiOm51bGwsInBob25lIjpudWxsLCJjYXJkIjpudWxsfQ.hSArNHGDC73VArc5nVFOA58rFmDhUBuG5QpKk4yP_tM"
+)

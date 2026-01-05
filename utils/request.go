@@ -122,12 +122,35 @@ func (sr *simpleRequest) POST(url string, args ...interface{}) (response string,
 
 	defer resp.Body.Close()
 
-	responseBytes := make([]byte, resp.ContentLength)
-	_, err = resp.Body.Read(responseBytes)
+	responseBytes, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return "", err
+	}
+	return string(responseBytes), nil
+}
+
+func (sr *simpleRequest) POSTWithBody(url string, body io.Reader) (response string, err error) {
+	req, err := http.NewRequest("POST", url, body)
+
+	req.Header.Add("Content-Type", "application/json")
+	//req.Header.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7")
+	//req.Header.Add("Accept-Charset", "gzip, deflate, br, zstd")
+	//req.Header.Add("Accept-Language", "en-US,en;q=0.9")
+	//req.Header.Add("sec-ch-ua", `"Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"`)
+	req.Header.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0")
+	req.Host = "worldofwarcraft.blizzard.com"
+	resp, err := sr._cli. /*Get(url)*/ Do(req)
+
 	if err != nil {
 		return "", err
 	}
 
+	defer resp.Body.Close()
+
+	responseBytes, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return "", err
+	}
 	return string(responseBytes), nil
 }
 

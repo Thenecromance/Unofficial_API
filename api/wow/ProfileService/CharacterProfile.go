@@ -5,6 +5,7 @@ package wowRetail
 // Author: @Thenecromance
 import (
 	"Unofficial_API/ApiError"
+	"Unofficial_API/global"
 	"Unofficial_API/internal"
 	"Unofficial_API/utils"
 	"context"
@@ -18,7 +19,10 @@ func StringCharacterProfileSummary(ctx context.Context,
 	realmSlug string, characterName string,
 ) (string, error) {
 	client := utils.NewRequest()
-	return client.GET("https://webapi.blizzard.cn/wow-armory-server/api/index", "realm_slug", realmSlug, "role_name", characterName)
+	cookies := map[string]string{
+		"blizzard_user_info": global.GetCookie(),
+	}
+	return client.GETWithCookies("https://webapi.blizzard.cn/wow-armory-server/api/index", cookies, "realm_slug", realmSlug, "role_name", characterName)
 }
 
 func CNCharacterProfileSummary(ctx context.Context,
@@ -26,19 +30,24 @@ func CNCharacterProfileSummary(ctx context.Context,
 ) (any, error) {
 
 	obj, err := StringCharacterProfileSummary(ctx, realmSlug, characterName)
+
 	if err != nil {
 		return nil, err
 	}
-	resp := &CharacterProfileSummaryResponse{}
+	var resp struct {
+		Code int                              `json:"code"`
+		Msg  string                           `json:"msg"`
+		Data *CharacterProfileSummaryResponse `json:"data"`
+	}
 
 	// TODO: this method need to support Other several Methods, so I need to fix it later
 
-	err = json.Unmarshal([]byte(obj), resp)
+	err = json.Unmarshal([]byte(obj), &resp)
 	if err != nil {
 		return nil, err
 	}
 
-	return resp, nil
+	return resp.Data, nil
 }
 
 func BNetCharacterProfileSummary(ctx context.Context,
@@ -92,3 +101,8 @@ func BNetCharacterProfileStatus(ctx context.Context,
 
 	return obj.(*CharacterProfileStatusResponse).ToBNet(), nil
 }
+
+/*
+
+{"operationName":"GetRealmStatusData","variables":{"input":{"compoundRegionGameVersionSlug":"us"}},"extensions":{"persistedQuery":{"version":1,"sha256Hash":"b37e546366a58e211e922b8c96cd1ff74249f564a49029cc9737fef3300ff175"}}}
+*/
