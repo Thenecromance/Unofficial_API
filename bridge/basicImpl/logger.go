@@ -1,4 +1,4 @@
-package logger
+package basicImpl
 
 import (
 	"Unofficial_API/Interface"

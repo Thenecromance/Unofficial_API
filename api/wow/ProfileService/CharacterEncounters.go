@@ -5,8 +5,8 @@ package wowRetail
 // Author: @Thenecromance
 import (
 	"Unofficial_API/ApiError"
+	"Unofficial_API/bridge/client"
 	"Unofficial_API/internal"
-	"Unofficial_API/utils"
 	"context"
 	"encoding/json"
 )
@@ -103,7 +103,7 @@ func BNetCharacterDungeons(ctx context.Context,
 func StringCharacterRaids(ctx context.Context,
 	realmSlug string, characterName string,
 ) (string, error) {
-	client := utils.NewRequest()
+
 	token := internal.TryToGetToken(realmSlug, characterName)
 
 	return client.GET("https://webapi.blizzard.cn/wow-armory-server/api/do", "api", "", "token", token)

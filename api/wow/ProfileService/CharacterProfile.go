@@ -5,9 +5,9 @@ package wowRetail
 // Author: @Thenecromance
 import (
 	"Unofficial_API/ApiError"
+	"Unofficial_API/bridge/client"
 	"Unofficial_API/global"
 	"Unofficial_API/internal"
-	"Unofficial_API/utils"
 	"context"
 	"encoding/json"
 )
@@ -18,7 +18,7 @@ import (
 func StringCharacterProfileSummary(ctx context.Context,
 	realmSlug string, characterName string,
 ) (string, error) {
-	client := utils.NewRequest()
+
 	cookies := map[string]string{
 		"blizzard_user_info": global.GetCookie(),
 	}
@@ -68,7 +68,7 @@ func BNetCharacterProfileSummary(ctx context.Context,
 func StringCharacterProfileStatus(ctx context.Context,
 	realmSlug string, characterName string,
 ) (string, error) {
-	/*client :=*/ utils.NewRequest()
+	/*client :=*/ basicImpl.NewRequest()
 	/*token := */ internal.TryToGetToken(realmSlug, characterName)
 	return "", ApiError.ErrorNotSupported
 }

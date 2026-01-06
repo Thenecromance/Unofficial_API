@@ -5,8 +5,8 @@ package wowRetail
 // Author: @Thenecromance
 import (
 	"Unofficial_API/ApiError"
+	"Unofficial_API/bridge/client"
 	"Unofficial_API/internal"
-	"Unofficial_API/utils"
 	"context"
 	"encoding/json"
 )
@@ -17,7 +17,7 @@ import (
 func StringCharacterAchievementsSummary(ctx context.Context,
 	realmSlug string, characterName string,
 ) (string, error) {
-	client := utils.NewRequest()
+
 	token := internal.TryToGetToken(realmSlug, characterName)
 	if token == "" {
 		return "", nil

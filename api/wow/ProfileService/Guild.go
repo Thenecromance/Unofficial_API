@@ -5,8 +5,8 @@ package wowRetail
 // Author: @Thenecromance
 import (
 	"Unofficial_API/ApiError"
+	"Unofficial_API/bridge/client"
 	"Unofficial_API/internal"
-	"Unofficial_API/utils"
 	"context"
 	"encoding/json"
 )
@@ -19,7 +19,7 @@ import (
 func StringGuild(ctx context.Context,
 	realmSlug string, nameSlug string,
 ) (string, error) {
-	client := utils.NewRequest()
+
 	return client.GET("https://webapi.blizzard.cn/wow-armory-server/api/guildIndex", "realm_slug", realmSlug, "guild_name", nameSlug)
 }
 
@@ -102,7 +102,7 @@ func BNetGuildActivity(ctx context.Context,
 func StringGuildAchievements(ctx context.Context,
 	realmSlug string, nameSlug string,
 ) (string, error) {
-	client := utils.NewRequest()
+
 	token := internal.TryToGetToken(realmSlug, nameSlug)
 
 	return client.GET("https://webapi.blizzard.cn/wow-armory-server/api/do", "api", "guild_achievement", "token", token)
@@ -143,7 +143,7 @@ func BNetGuildAchievements(ctx context.Context,
 func StringGuildRoster(ctx context.Context,
 	realmSlug string, nameSlug string,
 ) (string, error) {
-	client := utils.NewRequest()
+
 	token := internal.TryToGetToken(realmSlug, nameSlug)
 
 	return client.GET("https://webapi.blizzard.cn/wow-armory-server/api/do", "api", "guild_roster", "token", token)

@@ -81,8 +81,10 @@ func ParseTemplate(pkgName string, folder string, apiPath string) {
 				continue
 			}
 			if err = m.Execute(mf, map[string]any{
-				"PkgName": pkgName,
-				"Name":    api.Name,
+				"PkgName":      pkgName,
+				"ApiGroupName": apiGroup.ApiGroupName,
+				"Apis":         apiGroup.Apis,
+				"Name":         api.Name,
 			}); err != nil {
 				fmt.Printf("Error executing model template for %s: %v\n", api.Name, err)
 				mf.Close()

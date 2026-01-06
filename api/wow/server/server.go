@@ -1,7 +1,8 @@
 package server
 
 import (
-	"Unofficial_API/utils"
+	"Unofficial_API/bridge/client"
+	"Unofficial_API/bridge/log"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -77,6 +78,8 @@ func UpdateAllServerStatus() (string, error) {
 	var wg sync.WaitGroup
 	wg.Add(5)
 	go func() {
+		log.Debug("Updating CN server status")
+		defer log.Debug("Finished updating CN server status")
 		defer wg.Done()
 		var err error
 		serverList[0], err = UpdateCNServerStatus()
@@ -86,6 +89,8 @@ func UpdateAllServerStatus() (string, error) {
 
 	}()
 	go func() {
+		log.Debug("Updating TW server status")
+		defer log.Debug("Finished updating TW server status")
 		defer wg.Done()
 		var err error
 		serverList[1], err = UpdateTWServerStatus()
@@ -94,6 +99,8 @@ func UpdateAllServerStatus() (string, error) {
 		}
 	}()
 	go func() {
+		log.Debug("Updating US server status")
+		defer log.Debug("Finished updating US server status")
 		defer wg.Done()
 		var err error
 		serverList[2], err = UpdateUSServerStatus()
@@ -102,6 +109,8 @@ func UpdateAllServerStatus() (string, error) {
 		}
 	}()
 	go func() {
+		log.Debug("Updating EU server status")
+		defer log.Debug("Finished updating EU server status")
 		defer wg.Done()
 		var err error
 		serverList[3], err = UpdateEUServerStatus()
@@ -110,6 +119,8 @@ func UpdateAllServerStatus() (string, error) {
 		}
 	}()
 	go func() {
+		log.Debug("Updating KR server status")
+		defer log.Debug("Finished updating KR server status")
 		defer wg.Done()
 		var err error
 		serverList[4], err = UpdateKRServerStatus()
@@ -155,7 +166,6 @@ func convertStatusToUniversal(region string, status *Status) (result []Universal
 }
 
 func UpdateCNServerStatus() ([]UniversalServerStatus, error) {
-	client := utils.NewRequest()
 
 	resp, err := client.GET("https://webapi.blizzard.cn/wow-armory-server/api/server_status?server_type=wow_mainline")
 	if err != nil {
@@ -273,7 +283,7 @@ func UpdateUSServerStatus() ([]UniversalServerStatus, error) {
 }
 
 func doRequest(region string) (string, error) {
-	client := utils.NewRequest()
+
 	body := fmt.Sprintf(`{"operationName":"GetRealmStatusData","variables":{"input":{"compoundRegionGameVersionSlug":"%s"}},"extensions":{"persistedQuery":{"version":1,"sha256Hash":"b37e546366a58e211e922b8c96cd1ff74249f564a49029cc9737fef3300ff175"}}}`, region)
 	return client.POSTWithBody("https://worldofwarcraft.blizzard.com/en-us/graphql", newStringReader(body))
 }

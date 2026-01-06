@@ -1,37 +1,20 @@
 package main
 
 import (
-	"fmt"
-
-	"github.com/spf13/viper"
+	"Unofficial_API/api/wow/DataService/Achievement"
+	"Unofficial_API/global"
+	"context"
+	"encoding/json"
 )
 
-func init() {
-	viper.SetConfigName("universal_config")
-	viper.SetConfigType("yaml")
-
-	//viper.AddConfigPath("/etc/unofficial_api/")
-	//viper.AddConfigPath("$HOME/.unofficial_api")
-	viper.AddConfigPath(".")
-
-	if err := viper.ReadInConfig(); err != nil {
-		viper.Set("client_id", "")
-		viper.Set("client_secret", "")
-		viper.Set("cookie", "")
-		err := viper.SafeWriteConfig()
-		if err != nil {
-			fmt.Println(err)
-			return
-		}
-	}
-
-}
-
 func main() {
-
-	/*res, err := server.UpdateAllServerStatus()
+	achievement, err := wowRetail_Achievement.AchievementCategoriesIndex(context.Background(), &wowRetail_Achievement.AchievementCategoriesIndexFields{
+		Namespace: global.Static(),
+		Locale:    global.Locale(),
+	})
 	if err != nil {
-		panic(err)
+		return
 	}
-	os.WriteFile("server_status.json", []byte(res), 0644)*/
+	resp, _ := json.MarshalIndent(achievement, "", "\t")
+	println(string(resp))
 }
