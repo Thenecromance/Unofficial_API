@@ -39,6 +39,13 @@ func updateFromRemote(apiPath string) []*ApiGroup {
 }
 
 func ParseTemplate(pkgName string, folder string, apiPath string) {
+
+	file, err := os.ReadFile("./templates/api.tmpl")
+	if err != nil {
+		return
+	}
+	dataTmpl = string(file)
+
 	t, err := template.New("tmpl").Parse(dataTmpl)
 	if err != nil {
 		fmt.Printf("Error parsing template: %v\n", err)
@@ -71,7 +78,7 @@ func ParseTemplate(pkgName string, folder string, apiPath string) {
 		}
 		file.Close()
 		fmt.Printf("generate api %s\n", apiGroup.ApiGroupName)
-
+		
 		// For each API in the group, generate a separate model file named {{.Name}}.go
 		for _, api := range apiGroup.Apis {
 			modelFilePath := subFolder + "/" + api.Name + ".model.go"

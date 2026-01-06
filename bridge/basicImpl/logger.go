@@ -20,8 +20,6 @@ func init() {
 		log.Warn("failed to open log file, continue to stderr:", err)
 	}
 
-	log.Info("这是直接写入文件的日志示例")
-
 }
 
 type logger struct {
