@@ -13,6 +13,8 @@ import (
 	"encoding/json"
 	"io"
 	"net/http"
+
+	"github.com/jtacoma/uritemplates"
 )
 
 //==============================================================================================
@@ -67,10 +69,13 @@ func StringCharacterCollectionsIndex(ctx context.Context, fields *CharacterColle
 		}
 	}(fields)
 	cli := http.Client{}
+	tpl, _ := uritemplates.Parse(fields.Path)
+	u, _ := tpl.Expand(map[string]interface{}{"realmSlug": fields.RealmSlug, "characterName": fields.CharacterName})
+
 	req, err := http.NewRequestWithContext(
 		ctx,
 		fields.Methods,
-		"https://us.api.blizzard.com"+fields.Path,
+		"https://us.api.blizzard.com"+u,
 		nil)
 
 	if err != nil {
@@ -202,10 +207,13 @@ func StringCharacterDecorCollectionSummary(ctx context.Context, fields *Characte
 		}
 	}(fields)
 	cli := http.Client{}
+	tpl, _ := uritemplates.Parse(fields.Path)
+	u, _ := tpl.Expand(map[string]interface{}{"realmSlug": fields.RealmSlug, "characterName": fields.CharacterName})
+
 	req, err := http.NewRequestWithContext(
 		ctx,
 		fields.Methods,
-		"https://us.api.blizzard.com"+fields.Path,
+		"https://us.api.blizzard.com"+u,
 		nil)
 
 	if err != nil {
@@ -337,10 +345,13 @@ func StringCharacterHeirloomsCollectionSummary(ctx context.Context, fields *Char
 		}
 	}(fields)
 	cli := http.Client{}
+	tpl, _ := uritemplates.Parse(fields.Path)
+	u, _ := tpl.Expand(map[string]interface{}{"realmSlug": fields.RealmSlug, "characterName": fields.CharacterName})
+
 	req, err := http.NewRequestWithContext(
 		ctx,
 		fields.Methods,
-		"https://us.api.blizzard.com"+fields.Path,
+		"https://us.api.blizzard.com"+u,
 		nil)
 
 	if err != nil {
@@ -472,10 +483,13 @@ func StringCharacterMountsCollectionSummary(ctx context.Context, fields *Charact
 		}
 	}(fields)
 	cli := http.Client{}
+	tpl, _ := uritemplates.Parse(fields.Path)
+	u, _ := tpl.Expand(map[string]interface{}{"realmSlug": fields.RealmSlug, "characterName": fields.CharacterName})
+
 	req, err := http.NewRequestWithContext(
 		ctx,
 		fields.Methods,
-		"https://us.api.blizzard.com"+fields.Path,
+		"https://us.api.blizzard.com"+u,
 		nil)
 
 	if err != nil {
@@ -612,10 +626,13 @@ func StringCharacterPetsCollectionSummary(ctx context.Context, fields *Character
 		}
 	}(fields)
 	cli := http.Client{}
+	tpl, _ := uritemplates.Parse(fields.Path)
+	u, _ := tpl.Expand(map[string]interface{}{"realmSlug": fields.RealmSlug, "characterName": fields.CharacterName})
+
 	req, err := http.NewRequestWithContext(
 		ctx,
 		fields.Methods,
-		"https://us.api.blizzard.com"+fields.Path,
+		"https://us.api.blizzard.com"+u,
 		nil)
 
 	if err != nil {
@@ -752,10 +769,13 @@ func StringCharacterToysCollectionSummary(ctx context.Context, fields *Character
 		}
 	}(fields)
 	cli := http.Client{}
+	tpl, _ := uritemplates.Parse(fields.Path)
+	u, _ := tpl.Expand(map[string]interface{}{"realmSlug": fields.RealmSlug, "characterName": fields.CharacterName})
+
 	req, err := http.NewRequestWithContext(
 		ctx,
 		fields.Methods,
-		"https://us.api.blizzard.com"+fields.Path,
+		"https://us.api.blizzard.com"+u,
 		nil)
 
 	if err != nil {
@@ -887,10 +907,13 @@ func StringCharacterTransmogCollectionSummary(ctx context.Context, fields *Chara
 		}
 	}(fields)
 	cli := http.Client{}
+	tpl, _ := uritemplates.Parse(fields.Path)
+	u, _ := tpl.Expand(map[string]interface{}{"realmSlug": fields.RealmSlug, "characterName": fields.CharacterName})
+
 	req, err := http.NewRequestWithContext(
 		ctx,
 		fields.Methods,
-		"https://us.api.blizzard.com"+fields.Path,
+		"https://us.api.blizzard.com"+u,
 		nil)
 
 	if err != nil {

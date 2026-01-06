@@ -6,6 +6,7 @@ type RequestMethod struct {
 	CnRegion bool
 }
 
+
 type CNRequestMethod struct {
 	Name      string
 	RealmSlug string

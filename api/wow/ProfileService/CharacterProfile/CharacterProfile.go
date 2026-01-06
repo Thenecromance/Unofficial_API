@@ -14,6 +14,8 @@ import (
 	"encoding/json"
 	"io"
 	"net/http"
+
+	"github.com/jtacoma/uritemplates"
 )
 
 //==============================================================================================
@@ -62,17 +64,25 @@ func StringCharacterProfileSummary(ctx context.Context, fields *CharacterProfile
 		}
 
 		input.RequestMethod = utils.RequestMethod{
-			Methods:  "GET",
-			Path:     "/profile/wow/character/{realmSlug}/{characterName}",
+			Methods: "GET",
+			Path:/*"/profile/wow/character/%s/%s",*/ "/profile/wow/character/{realmSlug}/{characterName}",
 			CnRegion: false,
 		}
 	}(fields)
 	cli := http.Client{}
+
+	tpl, _ := uritemplates.Parse(fields.Path)
+	u, _ := tpl.Expand(map[string]interface{}{"realmSlug": fields.RealmSlug, "characterName": fields.CharacterName})
+
 	req, err := http.NewRequestWithContext(
 		ctx,
 		fields.Methods,
-		"https://us.api.blizzard.com"+fields.Path,
+		"https://us.api.blizzard.com",
 		nil)
+	if err != nil {
+		return "", err
+	}
+	req.URL.Path = u
 
 	if err != nil {
 		return "", err
@@ -121,10 +131,7 @@ func CNCharacterProfileSummary(ctx context.Context, fields *CharacterProfileSumm
 }
 
 func cnStringCharacterProfileSummary(ctx context.Context, fields *CharacterProfileSummaryFields) (string, error) {
-	token := internal.TryToGetToken(fields.CN.RealmSlug, fields.CN.Name)
-	if token == "" {
-		return "", ApiError.ErrorNoToken
-	}
+
 	cookies := map[string]string{
 		"blizzard_user_info": global.GetCookie(),
 	}
@@ -186,19 +193,15 @@ func StringCharacterProfileStatus(ctx context.Context, fields *CharacterProfileS
 	}
 
 	func(input *CharacterProfileStatusFields) {
-
 		if input.RealmSlug == "" {
 			input.RealmSlug = "tichondrius"
 		}
-
 		if input.CharacterName == "" {
 			input.CharacterName = "charactername"
 		}
-
 		if input.Namespace == "" {
 			input.Namespace = "profile-us"
 		}
-
 		if input.Locale == "" {
 			input.Locale = "en_US"
 		}
@@ -210,10 +213,14 @@ func StringCharacterProfileStatus(ctx context.Context, fields *CharacterProfileS
 		}
 	}(fields)
 	cli := http.Client{}
+
+	tpl, _ := uritemplates.Parse(fields.Path)
+	u, _ := tpl.Expand(map[string]interface{}{"realmSlug": fields.RealmSlug, "characterName": fields.CharacterName})
+
 	req, err := http.NewRequestWithContext(
 		ctx,
 		fields.Methods,
-		"https://us.api.blizzard.com"+fields.Path,
+		"https://us.api.blizzard.com"+u,
 		nil)
 
 	if err != nil {

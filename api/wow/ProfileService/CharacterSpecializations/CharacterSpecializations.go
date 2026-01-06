@@ -13,6 +13,8 @@ import (
 	"encoding/json"
 	"io"
 	"net/http"
+
+	"github.com/jtacoma/uritemplates"
 )
 
 //==============================================================================================
@@ -67,12 +69,14 @@ func StringCharacterSpecializationsSummary(ctx context.Context, fields *Characte
 		}
 	}(fields)
 	cli := http.Client{}
+	tpl, _ := uritemplates.Parse(fields.Path)
+	u, _ := tpl.Expand(map[string]interface{}{"realmSlug": fields.RealmSlug, "characterName": fields.CharacterName})
+
 	req, err := http.NewRequestWithContext(
 		ctx,
 		fields.Methods,
-		"https://us.api.blizzard.com"+fields.Path,
+		"https://us.api.blizzard.com"+u,
 		nil)
-
 	if err != nil {
 		return "", err
 	}

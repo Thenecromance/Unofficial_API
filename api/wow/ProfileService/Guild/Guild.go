@@ -13,6 +13,8 @@ import (
 	"encoding/json"
 	"io"
 	"net/http"
+
+	"github.com/jtacoma/uritemplates"
 )
 
 //==============================================================================================
@@ -67,12 +69,14 @@ func StringGuild(ctx context.Context, fields *GuildFields) (string, error) {
 		}
 	}(fields)
 	cli := http.Client{}
+	tpl, _ := uritemplates.Parse(fields.Path)
+	u, _ := tpl.Expand(map[string]interface{}{"realmSlug": fields.RealmSlug, "nameSlug": fields.NameSlug})
+
 	req, err := http.NewRequestWithContext(
 		ctx,
 		fields.Methods,
-		"https://us.api.blizzard.com"+fields.Path,
+		"https://us.api.blizzard.com"+u,
 		nil)
-
 	if err != nil {
 		return "", err
 	}
@@ -206,10 +210,13 @@ func StringGuildActivity(ctx context.Context, fields *GuildActivityFields) (stri
 		}
 	}(fields)
 	cli := http.Client{}
+	tpl, _ := uritemplates.Parse(fields.Path)
+	u, _ := tpl.Expand(map[string]interface{}{"realmSlug": fields.RealmSlug, "nameSlug": fields.NameSlug})
+
 	req, err := http.NewRequestWithContext(
 		ctx,
 		fields.Methods,
-		"https://us.api.blizzard.com"+fields.Path,
+		"https://us.api.blizzard.com"+u,
 		nil)
 
 	if err != nil {
@@ -346,10 +353,13 @@ func StringGuildAchievements(ctx context.Context, fields *GuildAchievementsField
 		}
 	}(fields)
 	cli := http.Client{}
+	tpl, _ := uritemplates.Parse(fields.Path)
+	u, _ := tpl.Expand(map[string]interface{}{"realmSlug": fields.RealmSlug, "nameSlug": fields.NameSlug})
+
 	req, err := http.NewRequestWithContext(
 		ctx,
 		fields.Methods,
-		"https://us.api.blizzard.com"+fields.Path,
+		"https://us.api.blizzard.com"+u,
 		nil)
 
 	if err != nil {
@@ -485,10 +495,13 @@ func StringGuildRoster(ctx context.Context, fields *GuildRosterFields) (string, 
 		}
 	}(fields)
 	cli := http.Client{}
+	tpl, _ := uritemplates.Parse(fields.Path)
+	u, _ := tpl.Expand(map[string]interface{}{"realmSlug": fields.RealmSlug, "nameSlug": fields.NameSlug})
+
 	req, err := http.NewRequestWithContext(
 		ctx,
 		fields.Methods,
-		"https://us.api.blizzard.com"+fields.Path,
+		"https://us.api.blizzard.com"+u,
 		nil)
 
 	if err != nil {
