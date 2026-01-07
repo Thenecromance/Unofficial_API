@@ -18,7 +18,7 @@ func init() {
 type {{.Name}}Request struct {
     {{range .Params}}
     {{if .IsBindingUri}} {{.Name}} {{.Type}} `uri:"{{.ParamName}}" binding:"required"` //{{.Description}}
-    {{else}} {{.Name}} {{.Type}} `form:"{{.ParamName}}"` //{{.Description}}
+    {{else}} {{.Name}} {{.Type}} `form:"{{.ParamName}},default={{.DefaultValue}}"` //{{.Description}}
     {{end}}
     {{end}}}
 
