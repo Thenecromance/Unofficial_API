@@ -16,7 +16,7 @@ func init() {
 }
 
 {{range .Apis}}
-/*
+{{/*
 type {{.Name}}Request struct {
 {{range .Params}}
 	{{if .IsBindingUri}}{{.Name}} {{.Type}} `uri:"{{.ParamName}}" binding:"required"` // {{.Description}}
@@ -24,7 +24,7 @@ type {{.Name}}Request struct {
 	{{end}}
 {{end}}
 }
-*/
+*/}}
 
 func gin{{.Name}}(c *gin.Context) {
 	// binding uri parameters

@@ -15,13 +15,13 @@ func RequestApiList(pkgName string, apiPath string) []*ApiGroup {
 	url := apiPath
 	resp, err := http.Get(url)
 	if err != nil {
-		log.Error("failed to get api list: %v", err)
+		log.Errorf("failed to get api list: %v", err)
 		return nil
 	}
 	defer resp.Body.Close()
 	buf, err := io.ReadAll(resp.Body)
 	if err != nil {
-		log.Error("failed to read response body: %v", err)
+		log.Errorf("failed to read response body: %v", err)
 		return nil
 	}
 
@@ -30,7 +30,7 @@ func RequestApiList(pkgName string, apiPath string) []*ApiGroup {
 	}
 
 	if err = sonic.Unmarshal(buf, &Response); err != nil {
-		log.Error("failed to unmarshal api list: %v", err)
+		log.Errorf("failed to unmarshal api list: %v", err)
 		return nil
 	}
 	for i := range Response.ApiList {
@@ -73,14 +73,14 @@ func parse(path string) (*template.Template, error) {
 	if err != nil {
 		return nil, err
 	}
-	log.Debug("Parsing template from %s", path)
+	log.Debugf("Parsing template from %s", path)
 	return template.New(path).Parse(file)
 }
 
 func GenerateApi(pkgName string, folder string, apiList []*ApiGroup) {
 	t, err := parse("./templates/api.tmpl")
 	if err != nil {
-		log.Error("Error parsing template: %v", err)
+		log.Errorf("Error parsing template: %v", err)
 		return
 	}
 
@@ -98,7 +98,7 @@ func GenerateApi(pkgName string, folder string, apiList []*ApiGroup) {
 			log.Error("Error generating API file %s: %v", filePath, err)
 			continue
 		}
-		log.Info("generate api %s", apiGroup.ApiGroupName)
+		log.Infof("generate api %s", apiGroup.ApiGroupName)
 	}
 }
 
@@ -122,10 +122,10 @@ func GenerateModels(pkgName string, folder string, apiList []*ApiGroup) {
 			}
 
 			if err := writeFile(modelFilePath, t, data); err != nil {
-				log.Error("Error generating model file %s: %v", modelFilePath, err)
+				log.Errorf("Error generating model file %s: %v", modelFilePath, err)
 				continue
 			}
-			log.Info("generate model %s", api.Name)
+			log.Infof("generate model %s", api.Name)
 		}
 	}
 }
@@ -134,11 +134,11 @@ func GenerateRouters(pkgName string, folder string, apiList []*ApiGroup) {
 	log.Debug("Generating routers...")
 	t, err := parse("./templates/routers.tmpl")
 	if err != nil {
-		log.Error("Error parsing template: %v", err)
+		log.Errorf("Error parsing template: %v", err)
 		return
 	}
 
-	log.Debug("Target folder: %s", folder)
+	log.Debugf("Target folder: %s", folder)
 
 	for _, apiGroup := range apiList {
 		// e.g. folder/GroupName.go
@@ -151,9 +151,9 @@ func GenerateRouters(pkgName string, folder string, apiList []*ApiGroup) {
 		}
 
 		if err := writeFile(filePath, t, data); err != nil {
-			log.Error("Error generating router file %s: %v", filePath, err)
+			log.Errorf("Error generating router file %s: %v", filePath, err)
 			continue
 		}
-		log.Info("generate router %s", apiGroup.ApiGroupName)
+		log.Infof("generate router %s", apiGroup.ApiGroupName)
 	}
 }
