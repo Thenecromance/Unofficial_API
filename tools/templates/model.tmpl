@@ -5,13 +5,13 @@ package {{.PkgName}}_{{.ApiGroupName}}
 // Author: @Thenecromance
 
 // BNet{{.Name}}Response is the unified BNet representation for {{.Name}}.
-type BNet{{.Name}}Response struct{}
+type BNet{{.Name}} struct{}
 
 // {{.Name}}Response represents the raw CN API response for {{.Name}}.
-type {{.Name}}Response BNet{{.Name}}Response
+type CN{{.Name}} BNet{{.Name}}
 
 // ToBNet converts the CN response to the unified BNet{{.Name}}Response.
 // Implementation intentionally returns nil and should be filled by hand when needed.
-func (r *{{.Name}}Response) ToBNet() any {
+func (r *CN{{.Name}}) ToBNet() any {
 	return r
 }

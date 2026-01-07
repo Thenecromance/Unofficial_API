@@ -144,7 +144,7 @@ func bridge{{.Name}}(ctx context.Context, fields *{{.Name}}Fields) (any, error) 
 		return nil, err
 	}
 
-	resp := &BNet{{.Name}}Response{}
+	resp := &BNet{{.Name}}{}
 	if err = json.Unmarshal([]byte(objString), &resp); err != nil {
 		return nil, err
 	}

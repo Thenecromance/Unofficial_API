@@ -8,17 +8,17 @@ import (
 )
 
 type Fields struct {
-	generateApi    bool
-	generateModel  bool
-	generateRouter bool
+	Api    bool
+	Model  bool
+	Router bool
 
-	generateWow     bool
-	generateClassic bool
-	generateD3      bool
-	generateHS      bool
-	generateSC2     bool
+	Wow        bool
+	Classic    bool
+	D3         bool
+	HeartStone bool
+	SC2        bool
 
-	writeToLocal bool
+	LocalPath string
 }
 
 func updateApi(f *Fields) {
@@ -33,19 +33,19 @@ func updateApi(f *Fields) {
 
 	tasks := []*apiTask{
 		// Wow Retail
-		{"wow", "DataService", "https://develop.battle.net/api/pages/content/documentation/world-of-warcraft/game-data-apis.json", f.generateWow, nil},
-		{"wow", "ProfileService", "https://develop.battle.net/api/pages/content/documentation/world-of-warcraft/profile-apis.json", f.generateWow, nil},
+		{"wow", "DataService", "https://develop.battle.net/api/pages/content/documentation/world-of-warcraft/game-data-apis.json", f.Wow, nil},
+		{"wow", "ProfileService", "https://develop.battle.net/api/pages/content/documentation/world-of-warcraft/profile-apis.json", f.Wow, nil},
 		// Wow Classic
-		{"wowClassic", "DataService", "https://develop.battle.net/api/pages/content/documentation/world-of-warcraft-classic/game-data-apis.json", f.generateClassic, nil},
-		{"wowClassic", "ProfileService", "https://develop.battle.net/api/pages/content/documentation/world-of-warcraft-classic/profile-apis.json", f.generateClassic, nil},
+		{"wowClassic", "DataService", "https://develop.battle.net/api/pages/content/documentation/world-of-warcraft-classic/game-data-apis.json", f.Classic, nil},
+		{"wowClassic", "ProfileService", "https://develop.battle.net/api/pages/content/documentation/world-of-warcraft-classic/profile-apis.json", f.Classic, nil},
 		// Diablo 3
-		{"D3", "Community", "https://develop.battle.net/api/pages/content/documentation/diablo-3/community-apis.json", f.generateD3, nil},
-		{"D3", "DataService", "https://develop.battle.net/api/pages/content/documentation/diablo-3/game-data-apis.json", f.generateD3, nil},
+		{"D3", "Community", "https://develop.battle.net/api/pages/content/documentation/diablo-3/community-apis.json", f.D3, nil},
+		{"D3", "DataService", "https://develop.battle.net/api/pages/content/documentation/diablo-3/game-data-apis.json", f.D3, nil},
 		// Hearthstone
-		{"HeartStone", "DataService", "https://develop.battle.net/api/pages/content/documentation/hearthstone/game-data-apis.json", f.generateHS, nil},
+		{"HeartStone", "DataService", "https://develop.battle.net/api/pages/content/documentation/hearthstone/game-data-apis.json", f.HeartStone, nil},
 		// StarCraft II
-		{"StarCraftII", "Community", "https://develop.battle.net/api/pages/content/documentation/starcraft-2/community-apis.json", f.generateSC2, nil},
-		{"StarCraftII", "DataService", "https://develop.battle.net/api/pages/content/documentation/starcraft-2/game-data-apis.json", f.generateSC2, nil},
+		{"StarCraftII", "Community", "https://develop.battle.net/api/pages/content/documentation/starcraft-2/community-apis.json", f.SC2, nil},
+		{"StarCraftII", "DataService", "https://develop.battle.net/api/pages/content/documentation/starcraft-2/game-data-apis.json", f.SC2, nil},
 	}
 
 	var wg sync.WaitGroup
@@ -74,38 +74,38 @@ func updateApi(f *Fields) {
 
 		outPath := "./api/" + task.Game + "/" + task.Category + "/"
 
-		if f.generateApi && task.Enabled {
+		if f.Api && task.Enabled {
 			updater.GenerateApi(task.Game, outPath, task.Result)
 		}
 
-		if f.generateModel && task.Enabled {
+		if f.Model && task.Enabled {
 			updater.GenerateModels(task.Game, outPath, task.Result)
 		}
 	}
 
-	if f.generateRouter {
+	if f.Router {
 		updater.GenerateRouters("routers", "./routers/", collection)
 	}
 
-	if f.writeToLocal {
+	if len(f.LocalPath) > 0 {
 		buf, _ := json.MarshalIndent(collection, "", "  ")
-		os.WriteFile("./api_collection.json", buf, 0644)
+		os.WriteFile(f.LocalPath, buf, 0644)
 	}
 
 }
 
 func main() {
 	updateApi(&Fields{
-		generateApi:    true,
-		generateModel:  true,
-		generateRouter: true,
+		Api:    true,
+		Model:  true,
+		Router: true,
 
-		generateWow:     true,
-		generateClassic: false,
-		generateD3:      false,
-		generateHS:      false,
-		generateSC2:     false,
+		Wow:        true,
+		Classic:    true,
+		D3:         true,
+		HeartStone: true,
+		SC2:        true,
 
-		writeToLocal: true,
+		LocalPath: "./api_collection.json",
 	})
 }
