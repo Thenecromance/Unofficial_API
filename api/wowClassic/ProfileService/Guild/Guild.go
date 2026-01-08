@@ -8,6 +8,11 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+	    "strings"
+    
+
 	"io"
 	"net/http"
 
@@ -162,6 +167,19 @@ func StringGuild(ctx context.Context, fields *GuildFields) (string, error) {
 
 // bridgeGuild routes the request to either CN or Global logic based on input.
 func bridgeGuild(ctx context.Context, fields *GuildFields) (any, error) {
+    
+	if strings.Contains(fields.Namespace, "-cn") {
+		if fields.CN == nil {
+			fields.CN = &utils.CNRequestMethod{
+				
+				Name:      fields.NameSlug,
+				
+				RealmSlug: fields.RealmSlug,
+			}
+		}
+	}
+	
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -333,6 +351,19 @@ func StringGuildActivity(ctx context.Context, fields *GuildActivityFields) (stri
 
 // bridgeGuildActivity routes the request to either CN or Global logic based on input.
 func bridgeGuildActivity(ctx context.Context, fields *GuildActivityFields) (any, error) {
+    
+	if strings.Contains(fields.Namespace, "-cn") {
+		if fields.CN == nil {
+			fields.CN = &utils.CNRequestMethod{
+				
+				Name:      fields.NameSlug,
+				
+				RealmSlug: fields.RealmSlug,
+			}
+		}
+	}
+	
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -504,6 +535,19 @@ func StringGuildAchievements(ctx context.Context, fields *GuildAchievementsField
 
 // bridgeGuildAchievements routes the request to either CN or Global logic based on input.
 func bridgeGuildAchievements(ctx context.Context, fields *GuildAchievementsFields) (any, error) {
+    
+	if strings.Contains(fields.Namespace, "-cn") {
+		if fields.CN == nil {
+			fields.CN = &utils.CNRequestMethod{
+				
+				Name:      fields.NameSlug,
+				
+				RealmSlug: fields.RealmSlug,
+			}
+		}
+	}
+	
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -675,6 +719,19 @@ func StringGuildRoster(ctx context.Context, fields *GuildRosterFields) (string, 
 
 // bridgeGuildRoster routes the request to either CN or Global logic based on input.
 func bridgeGuildRoster(ctx context.Context, fields *GuildRosterFields) (any, error) {
+    
+	if strings.Contains(fields.Namespace, "-cn") {
+		if fields.CN == nil {
+			fields.CN = &utils.CNRequestMethod{
+				
+				Name:      fields.NameSlug,
+				
+				RealmSlug: fields.RealmSlug,
+			}
+		}
+	}
+	
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -135,6 +138,8 @@ func StringModifiedCraftingIndex(ctx context.Context, fields *ModifiedCraftingIn
 
 // bridgeModifiedCraftingIndex routes the request to either CN or Global logic based on input.
 func bridgeModifiedCraftingIndex(ctx context.Context, fields *ModifiedCraftingIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -279,6 +284,8 @@ func StringModifiedCraftingCategoryIndex(ctx context.Context, fields *ModifiedCr
 
 // bridgeModifiedCraftingCategoryIndex routes the request to either CN or Global logic based on input.
 func bridgeModifiedCraftingCategoryIndex(ctx context.Context, fields *ModifiedCraftingCategoryIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -442,6 +449,8 @@ func StringModifiedCraftingCategory(ctx context.Context, fields *ModifiedCraftin
 
 // bridgeModifiedCraftingCategory routes the request to either CN or Global logic based on input.
 func bridgeModifiedCraftingCategory(ctx context.Context, fields *ModifiedCraftingCategoryFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -586,6 +595,8 @@ func StringModifiedCraftingReagentSlotTypeIndex(ctx context.Context, fields *Mod
 
 // bridgeModifiedCraftingReagentSlotTypeIndex routes the request to either CN or Global logic based on input.
 func bridgeModifiedCraftingReagentSlotTypeIndex(ctx context.Context, fields *ModifiedCraftingReagentSlotTypeIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -749,6 +760,8 @@ func StringModifiedCraftingReagentSlotType(ctx context.Context, fields *Modified
 
 // bridgeModifiedCraftingReagentSlotType routes the request to either CN or Global logic based on input.
 func bridgeModifiedCraftingReagentSlotType(ctx context.Context, fields *ModifiedCraftingReagentSlotTypeFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

@@ -8,6 +8,11 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+	    "strings"
+    
+
 	"io"
 	"net/http"
 
@@ -162,6 +167,19 @@ func StringCharacterEncountersSummary(ctx context.Context, fields *CharacterEnco
 
 // bridgeCharacterEncountersSummary routes the request to either CN or Global logic based on input.
 func bridgeCharacterEncountersSummary(ctx context.Context, fields *CharacterEncountersSummaryFields) (any, error) {
+    
+	if strings.Contains(fields.Namespace, "-cn") {
+		if fields.CN == nil {
+			fields.CN = &utils.CNRequestMethod{
+				
+				Name:      fields.CharacterName,
+				
+				RealmSlug: fields.RealmSlug,
+			}
+		}
+	}
+	
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -333,6 +351,19 @@ func StringCharacterDungeons(ctx context.Context, fields *CharacterDungeonsField
 
 // bridgeCharacterDungeons routes the request to either CN or Global logic based on input.
 func bridgeCharacterDungeons(ctx context.Context, fields *CharacterDungeonsFields) (any, error) {
+    
+	if strings.Contains(fields.Namespace, "-cn") {
+		if fields.CN == nil {
+			fields.CN = &utils.CNRequestMethod{
+				
+				Name:      fields.CharacterName,
+				
+				RealmSlug: fields.RealmSlug,
+			}
+		}
+	}
+	
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -504,6 +535,19 @@ func StringCharacterRaids(ctx context.Context, fields *CharacterRaidsFields) (st
 
 // bridgeCharacterRaids routes the request to either CN or Global logic based on input.
 func bridgeCharacterRaids(ctx context.Context, fields *CharacterRaidsFields) (any, error) {
+    
+	if strings.Contains(fields.Namespace, "-cn") {
+		if fields.CN == nil {
+			fields.CN = &utils.CNRequestMethod{
+				
+				Name:      fields.CharacterName,
+				
+				RealmSlug: fields.RealmSlug,
+			}
+		}
+	}
+	
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

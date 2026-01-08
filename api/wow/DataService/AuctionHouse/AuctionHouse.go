@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -154,6 +157,8 @@ func StringAuctions(ctx context.Context, fields *AuctionsFields) (string, error)
 
 // bridgeAuctions routes the request to either CN or Global logic based on input.
 func bridgeAuctions(ctx context.Context, fields *AuctionsFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -298,6 +303,8 @@ func StringCommodities(ctx context.Context, fields *CommoditiesFields) (string, 
 
 // bridgeCommodities routes the request to either CN or Global logic based on input.
 func bridgeCommodities(ctx context.Context, fields *CommoditiesFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

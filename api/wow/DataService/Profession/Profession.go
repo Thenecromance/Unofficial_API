@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -135,6 +138,8 @@ func StringProfessionsIndex(ctx context.Context, fields *ProfessionsIndexFields)
 
 // bridgeProfessionsIndex routes the request to either CN or Global logic based on input.
 func bridgeProfessionsIndex(ctx context.Context, fields *ProfessionsIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -298,6 +303,8 @@ func StringProfession(ctx context.Context, fields *ProfessionFields) (string, er
 
 // bridgeProfession routes the request to either CN or Global logic based on input.
 func bridgeProfession(ctx context.Context, fields *ProfessionFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -461,6 +468,8 @@ func StringProfessionMedia(ctx context.Context, fields *ProfessionMediaFields) (
 
 // bridgeProfessionMedia routes the request to either CN or Global logic based on input.
 func bridgeProfessionMedia(ctx context.Context, fields *ProfessionMediaFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -630,6 +639,8 @@ func StringProfessionSkillTier(ctx context.Context, fields *ProfessionSkillTierF
 
 // bridgeProfessionSkillTier routes the request to either CN or Global logic based on input.
 func bridgeProfessionSkillTier(ctx context.Context, fields *ProfessionSkillTierFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -793,6 +804,8 @@ func StringRecipe(ctx context.Context, fields *RecipeFields) (string, error) {
 
 // bridgeRecipe routes the request to either CN or Global logic based on input.
 func bridgeRecipe(ctx context.Context, fields *RecipeFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -956,6 +969,8 @@ func StringRecipeMedia(ctx context.Context, fields *RecipeMediaFields) (string, 
 
 // bridgeRecipeMedia routes the request to either CN or Global logic based on input.
 func bridgeRecipeMedia(ctx context.Context, fields *RecipeMediaFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

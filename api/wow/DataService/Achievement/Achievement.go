@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -135,6 +138,8 @@ func StringAchievementsIndex(ctx context.Context, fields *AchievementsIndexField
 
 // bridgeAchievementsIndex routes the request to either CN or Global logic based on input.
 func bridgeAchievementsIndex(ctx context.Context, fields *AchievementsIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -298,6 +303,8 @@ func StringAchievement(ctx context.Context, fields *AchievementFields) (string, 
 
 // bridgeAchievement routes the request to either CN or Global logic based on input.
 func bridgeAchievement(ctx context.Context, fields *AchievementFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -461,6 +468,8 @@ func StringAchievementMedia(ctx context.Context, fields *AchievementMediaFields)
 
 // bridgeAchievementMedia routes the request to either CN or Global logic based on input.
 func bridgeAchievementMedia(ctx context.Context, fields *AchievementMediaFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -605,6 +614,8 @@ func StringAchievementCategoriesIndex(ctx context.Context, fields *AchievementCa
 
 // bridgeAchievementCategoriesIndex routes the request to either CN or Global logic based on input.
 func bridgeAchievementCategoriesIndex(ctx context.Context, fields *AchievementCategoriesIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -768,6 +779,8 @@ func StringAchievementCategory(ctx context.Context, fields *AchievementCategoryF
 
 // bridgeAchievementCategory routes the request to either CN or Global logic based on input.
 func bridgeAchievementCategory(ctx context.Context, fields *AchievementCategoryFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

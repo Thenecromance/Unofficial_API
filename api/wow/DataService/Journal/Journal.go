@@ -10,6 +10,9 @@ import (
 	
 	    "strconv"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -137,6 +140,8 @@ func StringJournalExpansionsIndex(ctx context.Context, fields *JournalExpansions
 
 // bridgeJournalExpansionsIndex routes the request to either CN or Global logic based on input.
 func bridgeJournalExpansionsIndex(ctx context.Context, fields *JournalExpansionsIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -300,6 +305,8 @@ func StringJournalExpansion(ctx context.Context, fields *JournalExpansionFields)
 
 // bridgeJournalExpansion routes the request to either CN or Global logic based on input.
 func bridgeJournalExpansion(ctx context.Context, fields *JournalExpansionFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -444,6 +451,8 @@ func StringJournalEncountersIndex(ctx context.Context, fields *JournalEncounters
 
 // bridgeJournalEncountersIndex routes the request to either CN or Global logic based on input.
 func bridgeJournalEncountersIndex(ctx context.Context, fields *JournalEncountersIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -607,6 +616,8 @@ func StringJournalEncounter(ctx context.Context, fields *JournalEncounterFields)
 
 // bridgeJournalEncounter routes the request to either CN or Global logic based on input.
 func bridgeJournalEncounter(ctx context.Context, fields *JournalEncounterFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -772,6 +783,8 @@ func StringJournalEncounterSearch(ctx context.Context, fields *JournalEncounterS
 
 // bridgeJournalEncounterSearch routes the request to either CN or Global logic based on input.
 func bridgeJournalEncounterSearch(ctx context.Context, fields *JournalEncounterSearchFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -916,6 +929,8 @@ func StringJournalInstancesIndex(ctx context.Context, fields *JournalInstancesIn
 
 // bridgeJournalInstancesIndex routes the request to either CN or Global logic based on input.
 func bridgeJournalInstancesIndex(ctx context.Context, fields *JournalInstancesIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -1079,6 +1094,8 @@ func StringJournalInstance(ctx context.Context, fields *JournalInstanceFields) (
 
 // bridgeJournalInstance routes the request to either CN or Global logic based on input.
 func bridgeJournalInstance(ctx context.Context, fields *JournalInstanceFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -1242,6 +1259,8 @@ func StringJournalInstanceMedia(ctx context.Context, fields *JournalInstanceMedi
 
 // bridgeJournalInstanceMedia routes the request to either CN or Global logic based on input.
 func bridgeJournalInstanceMedia(ctx context.Context, fields *JournalInstanceMediaFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

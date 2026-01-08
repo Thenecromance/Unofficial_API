@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -135,6 +138,8 @@ func StringGuildCrestComponentsIndex(ctx context.Context, fields *GuildCrestComp
 
 // bridgeGuildCrestComponentsIndex routes the request to either CN or Global logic based on input.
 func bridgeGuildCrestComponentsIndex(ctx context.Context, fields *GuildCrestComponentsIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -294,6 +299,8 @@ func StringGuildCrestBorderMedia(ctx context.Context, fields *GuildCrestBorderMe
 
 // bridgeGuildCrestBorderMedia routes the request to either CN or Global logic based on input.
 func bridgeGuildCrestBorderMedia(ctx context.Context, fields *GuildCrestBorderMediaFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -453,6 +460,8 @@ func StringGuildCrestEmblemMedia(ctx context.Context, fields *GuildCrestEmblemMe
 
 // bridgeGuildCrestEmblemMedia routes the request to either CN or Global logic based on input.
 func bridgeGuildCrestEmblemMedia(ctx context.Context, fields *GuildCrestEmblemMediaFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

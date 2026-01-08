@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -135,6 +138,8 @@ func StringPetsIndex(ctx context.Context, fields *PetsIndexFields) (string, erro
 
 // bridgePetsIndex routes the request to either CN or Global logic based on input.
 func bridgePetsIndex(ctx context.Context, fields *PetsIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -298,6 +303,8 @@ func StringPet(ctx context.Context, fields *PetFields) (string, error) {
 
 // bridgePet routes the request to either CN or Global logic based on input.
 func bridgePet(ctx context.Context, fields *PetFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -461,6 +468,8 @@ func StringPetMedia(ctx context.Context, fields *PetMediaFields) (string, error)
 
 // bridgePetMedia routes the request to either CN or Global logic based on input.
 func bridgePetMedia(ctx context.Context, fields *PetMediaFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -605,6 +614,8 @@ func StringPetAbilitiesIndex(ctx context.Context, fields *PetAbilitiesIndexField
 
 // bridgePetAbilitiesIndex routes the request to either CN or Global logic based on input.
 func bridgePetAbilitiesIndex(ctx context.Context, fields *PetAbilitiesIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -768,6 +779,8 @@ func StringPetAbility(ctx context.Context, fields *PetAbilityFields) (string, er
 
 // bridgePetAbility routes the request to either CN or Global logic based on input.
 func bridgePetAbility(ctx context.Context, fields *PetAbilityFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -931,6 +944,8 @@ func StringPetAbilityMedia(ctx context.Context, fields *PetAbilityMediaFields) (
 
 // bridgePetAbilityMedia routes the request to either CN or Global logic based on input.
 func bridgePetAbilityMedia(ctx context.Context, fields *PetAbilityMediaFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

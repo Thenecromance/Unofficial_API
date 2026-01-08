@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -135,6 +138,8 @@ func StringMythicKeystoneAffixesIndex(ctx context.Context, fields *MythicKeyston
 
 // bridgeMythicKeystoneAffixesIndex routes the request to either CN or Global logic based on input.
 func bridgeMythicKeystoneAffixesIndex(ctx context.Context, fields *MythicKeystoneAffixesIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -298,6 +303,8 @@ func StringMythicKeystoneAffix(ctx context.Context, fields *MythicKeystoneAffixF
 
 // bridgeMythicKeystoneAffix routes the request to either CN or Global logic based on input.
 func bridgeMythicKeystoneAffix(ctx context.Context, fields *MythicKeystoneAffixFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -461,6 +468,8 @@ func StringMythicKeystoneAffixMedia(ctx context.Context, fields *MythicKeystoneA
 
 // bridgeMythicKeystoneAffixMedia routes the request to either CN or Global logic based on input.
 func bridgeMythicKeystoneAffixMedia(ctx context.Context, fields *MythicKeystoneAffixMediaFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

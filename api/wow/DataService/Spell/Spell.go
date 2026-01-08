@@ -10,6 +10,9 @@ import (
 	
 	    "strconv"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -156,6 +159,8 @@ func StringSpell(ctx context.Context, fields *SpellFields) (string, error) {
 
 // bridgeSpell routes the request to either CN or Global logic based on input.
 func bridgeSpell(ctx context.Context, fields *SpellFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -319,6 +324,8 @@ func StringSpellMedia(ctx context.Context, fields *SpellMediaFields) (string, er
 
 // bridgeSpellMedia routes the request to either CN or Global logic based on input.
 func bridgeSpellMedia(ctx context.Context, fields *SpellMediaFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -484,6 +491,8 @@ func StringSpellSearch(ctx context.Context, fields *SpellSearchFields) (string, 
 
 // bridgeSpellSearch routes the request to either CN or Global logic based on input.
 func bridgeSpellSearch(ctx context.Context, fields *SpellSearchFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

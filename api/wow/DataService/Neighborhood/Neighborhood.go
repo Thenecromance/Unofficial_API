@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -135,6 +138,8 @@ func StringNeighborhoodMapIndex(ctx context.Context, fields *NeighborhoodMapInde
 
 // bridgeNeighborhoodMapIndex routes the request to either CN or Global logic based on input.
 func bridgeNeighborhoodMapIndex(ctx context.Context, fields *NeighborhoodMapIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -299,6 +304,8 @@ func StringNeighborhoodMap(ctx context.Context, fields *NeighborhoodMapFields) (
 
 // bridgeNeighborhoodMap routes the request to either CN or Global logic based on input.
 func bridgeNeighborhoodMap(ctx context.Context, fields *NeighborhoodMapFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -470,6 +477,8 @@ func StringNeighborhood(ctx context.Context, fields *NeighborhoodFields) (string
 
 // bridgeNeighborhood routes the request to either CN or Global logic based on input.
 func bridgeNeighborhood(ctx context.Context, fields *NeighborhoodFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

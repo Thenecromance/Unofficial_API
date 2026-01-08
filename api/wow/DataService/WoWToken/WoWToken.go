@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -133,6 +136,8 @@ func StringWoWTokenIndex(ctx context.Context, fields *WoWTokenIndexFields) (stri
 
 // bridgeWoWTokenIndex routes the request to either CN or Global logic based on input.
 func bridgeWoWTokenIndex(ctx context.Context, fields *WoWTokenIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -277,6 +282,8 @@ func StringWoWTokenIndexCN(ctx context.Context, fields *WoWTokenIndexCNFields) (
 
 // bridgeWoWTokenIndexCN routes the request to either CN or Global logic based on input.
 func bridgeWoWTokenIndexCN(ctx context.Context, fields *WoWTokenIndexCNFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

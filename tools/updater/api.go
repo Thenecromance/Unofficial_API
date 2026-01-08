@@ -46,6 +46,15 @@ func (ap *ApiGroup) HasURIBinding() bool {
 	return false
 }
 
+func (ap *ApiGroup) ProcessChineseData() bool {
+	for _, p := range ap.Apis {
+		if p.ProcessChineseData() {
+			return true
+		}
+	}
+	return false
+}
+
 type Api struct {
 	Name        string        `json:"name"`        // just like "Achievement API"
 	Description string        `json:"description"` // what this api do
@@ -74,6 +83,18 @@ func (a *Api) NeedStrconv() bool {
 		}
 	}
 	return false
+}
+
+func (a *Api) ProcessChineseData() bool {
+	var containName, containRealm bool
+	containName = strings.Contains(a.Path, "characterName")
+	containGuild := strings.Contains(a.Path, "nameSlug")
+	containRealm = strings.Contains(a.Path, "realmSlug")
+	return (containName || containGuild) && containRealm
+}
+
+func (a *Api) IsGuild() bool {
+	return strings.Contains(a.Path, "nameSlug")
 }
 
 func (a *Api) fixed() {
@@ -117,37 +138,6 @@ func (a *Api) fixParams() {
 		p.fixed()
 	}
 }
-
-/* func (a *Api) formatPath(template string, params map[string]string) string {
-	var args = make([]string, 0)
-	for key, value := range params {
-		placeholder := "{" + key + "}"
-		switch value {
-		case "string":
-			template = strings.Replace(template, placeholder, "%s", -1)
-			args = append(args, key)
-		case "int":
-			template = strings.Replace(template, placeholder, "%d", -1)
-			args = append(args, key)
-		case "float":
-			template = strings.Replace(template, placeholder, "%f", -1)
-			args = append(args, key)
-		default:
-			panic(fmt.Errorf("unsupported type: %s", value))
-		}
-	}
-
-	fmt.Sprintf("fmt.Sprinf(template, args...) ")
-
-	result := "fmt.Sprintf(\"" + template + "\","
-	for _, arg := range args {
-		result += arg + ","
-	}
-	result = strings.TrimRight(result, ",")
-	result += ")"
-
-	return result
-} */
 
 func (a *Api) fixPath() {
 	lists := strings.Split(a.Path, "/")

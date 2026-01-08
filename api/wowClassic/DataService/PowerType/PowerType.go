@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -135,6 +138,8 @@ func StringPowerTypesIndex(ctx context.Context, fields *PowerTypesIndexFields) (
 
 // bridgePowerTypesIndex routes the request to either CN or Global logic based on input.
 func bridgePowerTypesIndex(ctx context.Context, fields *PowerTypesIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -294,6 +299,8 @@ func StringPowerType(ctx context.Context, fields *PowerTypeFields) (string, erro
 
 // bridgePowerType routes the request to either CN or Global logic based on input.
 func bridgePowerType(ctx context.Context, fields *PowerTypeFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

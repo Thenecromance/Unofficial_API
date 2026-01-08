@@ -8,6 +8,11 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+	    "strings"
+    
+
 	"io"
 	"net/http"
 
@@ -162,6 +167,19 @@ func StringCharacterMediaSummary(ctx context.Context, fields *CharacterMediaSumm
 
 // bridgeCharacterMediaSummary routes the request to either CN or Global logic based on input.
 func bridgeCharacterMediaSummary(ctx context.Context, fields *CharacterMediaSummaryFields) (any, error) {
+    
+	if strings.Contains(fields.Namespace, "-cn") {
+		if fields.CN == nil {
+			fields.CN = &utils.CNRequestMethod{
+				
+				Name:      fields.CharacterName,
+				
+				RealmSlug: fields.RealmSlug,
+			}
+		}
+	}
+	
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

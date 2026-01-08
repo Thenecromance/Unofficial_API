@@ -10,6 +10,9 @@ import (
 	
 	    "strconv"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -137,6 +140,8 @@ func StringDecorIndex(ctx context.Context, fields *DecorIndexFields) (string, er
 
 // bridgeDecorIndex routes the request to either CN or Global logic based on input.
 func bridgeDecorIndex(ctx context.Context, fields *DecorIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -301,6 +306,8 @@ func StringDecor(ctx context.Context, fields *DecorFields) (string, error) {
 
 // bridgeDecor routes the request to either CN or Global logic based on input.
 func bridgeDecor(ctx context.Context, fields *DecorFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -466,6 +473,8 @@ func StringDecorSearch(ctx context.Context, fields *DecorSearchFields) (string, 
 
 // bridgeDecorSearch routes the request to either CN or Global logic based on input.
 func bridgeDecorSearch(ctx context.Context, fields *DecorSearchFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -610,6 +619,8 @@ func StringFixtureIndex(ctx context.Context, fields *FixtureIndexFields) (string
 
 // bridgeFixtureIndex routes the request to either CN or Global logic based on input.
 func bridgeFixtureIndex(ctx context.Context, fields *FixtureIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -774,6 +785,8 @@ func StringFixture(ctx context.Context, fields *FixtureFields) (string, error) {
 
 // bridgeFixture routes the request to either CN or Global logic based on input.
 func bridgeFixture(ctx context.Context, fields *FixtureFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -939,6 +952,8 @@ func StringFixtureSearch(ctx context.Context, fields *FixtureSearchFields) (stri
 
 // bridgeFixtureSearch routes the request to either CN or Global logic based on input.
 func bridgeFixtureSearch(ctx context.Context, fields *FixtureSearchFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -1083,6 +1098,8 @@ func StringFixtureHookIndex(ctx context.Context, fields *FixtureHookIndexFields)
 
 // bridgeFixtureHookIndex routes the request to either CN or Global logic based on input.
 func bridgeFixtureHookIndex(ctx context.Context, fields *FixtureHookIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -1247,6 +1264,8 @@ func StringFixtureHook(ctx context.Context, fields *FixtureHookFields) (string, 
 
 // bridgeFixtureHook routes the request to either CN or Global logic based on input.
 func bridgeFixtureHook(ctx context.Context, fields *FixtureHookFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -1401,6 +1420,8 @@ func StringFixtureHookSearch(ctx context.Context, fields *FixtureHookSearchField
 
 // bridgeFixtureHookSearch routes the request to either CN or Global logic based on input.
 func bridgeFixtureHookSearch(ctx context.Context, fields *FixtureHookSearchFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -1545,6 +1566,8 @@ func StringRoomIndex(ctx context.Context, fields *RoomIndexFields) (string, erro
 
 // bridgeRoomIndex routes the request to either CN or Global logic based on input.
 func bridgeRoomIndex(ctx context.Context, fields *RoomIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -1709,6 +1732,8 @@ func StringRoom(ctx context.Context, fields *RoomFields) (string, error) {
 
 // bridgeRoom routes the request to either CN or Global logic based on input.
 func bridgeRoom(ctx context.Context, fields *RoomFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -1874,6 +1899,8 @@ func StringRoomSearch(ctx context.Context, fields *RoomSearchFields) (string, er
 
 // bridgeRoomSearch routes the request to either CN or Global logic based on input.
 func bridgeRoomSearch(ctx context.Context, fields *RoomSearchFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

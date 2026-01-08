@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -124,6 +127,8 @@ func StringAllmetadata(ctx context.Context, fields *AllmetadataFields) (string, 
 
 // bridgeAllmetadata routes the request to either CN or Global logic based on input.
 func bridgeAllmetadata(ctx context.Context, fields *AllmetadataFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -277,6 +282,8 @@ func StringSpecificmetadata(ctx context.Context, fields *SpecificmetadataFields)
 
 // bridgeSpecificmetadata routes the request to either CN or Global logic based on input.
 func bridgeSpecificmetadata(ctx context.Context, fields *SpecificmetadataFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

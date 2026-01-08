@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -135,6 +138,8 @@ func StringReputationFactionsIndex(ctx context.Context, fields *ReputationFactio
 
 // bridgeReputationFactionsIndex routes the request to either CN or Global logic based on input.
 func bridgeReputationFactionsIndex(ctx context.Context, fields *ReputationFactionsIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -298,6 +303,8 @@ func StringReputationFaction(ctx context.Context, fields *ReputationFactionField
 
 // bridgeReputationFaction routes the request to either CN or Global logic based on input.
 func bridgeReputationFaction(ctx context.Context, fields *ReputationFactionFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -442,6 +449,8 @@ func StringReputationTiersIndex(ctx context.Context, fields *ReputationTiersInde
 
 // bridgeReputationTiersIndex routes the request to either CN or Global logic based on input.
 func bridgeReputationTiersIndex(ctx context.Context, fields *ReputationTiersIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -605,6 +614,8 @@ func StringReputationTiers(ctx context.Context, fields *ReputationTiersFields) (
 
 // bridgeReputationTiers routes the request to either CN or Global logic based on input.
 func bridgeReputationTiers(ctx context.Context, fields *ReputationTiersFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -154,6 +157,8 @@ func StringMythicKeystoneLeaderboardsIndex(ctx context.Context, fields *MythicKe
 
 // bridgeMythicKeystoneLeaderboardsIndex routes the request to either CN or Global logic based on input.
 func bridgeMythicKeystoneLeaderboardsIndex(ctx context.Context, fields *MythicKeystoneLeaderboardsIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -329,6 +334,8 @@ func StringMythicKeystoneLeaderboard(ctx context.Context, fields *MythicKeystone
 
 // bridgeMythicKeystoneLeaderboard routes the request to either CN or Global logic based on input.
 func bridgeMythicKeystoneLeaderboard(ctx context.Context, fields *MythicKeystoneLeaderboardFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

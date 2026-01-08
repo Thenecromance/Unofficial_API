@@ -8,6 +8,11 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+	    "strings"
+    
+
 	"io"
 	"net/http"
 
@@ -162,6 +167,19 @@ func StringCharacterCollectionsIndex(ctx context.Context, fields *CharacterColle
 
 // bridgeCharacterCollectionsIndex routes the request to either CN or Global logic based on input.
 func bridgeCharacterCollectionsIndex(ctx context.Context, fields *CharacterCollectionsIndexFields) (any, error) {
+    
+	if strings.Contains(fields.Namespace, "-cn") {
+		if fields.CN == nil {
+			fields.CN = &utils.CNRequestMethod{
+				
+				Name:      fields.CharacterName,
+				
+				RealmSlug: fields.RealmSlug,
+			}
+		}
+	}
+	
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -333,6 +351,19 @@ func StringCharacterDecorCollectionSummary(ctx context.Context, fields *Characte
 
 // bridgeCharacterDecorCollectionSummary routes the request to either CN or Global logic based on input.
 func bridgeCharacterDecorCollectionSummary(ctx context.Context, fields *CharacterDecorCollectionSummaryFields) (any, error) {
+    
+	if strings.Contains(fields.Namespace, "-cn") {
+		if fields.CN == nil {
+			fields.CN = &utils.CNRequestMethod{
+				
+				Name:      fields.CharacterName,
+				
+				RealmSlug: fields.RealmSlug,
+			}
+		}
+	}
+	
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -504,6 +535,19 @@ func StringCharacterHeirloomsCollectionSummary(ctx context.Context, fields *Char
 
 // bridgeCharacterHeirloomsCollectionSummary routes the request to either CN or Global logic based on input.
 func bridgeCharacterHeirloomsCollectionSummary(ctx context.Context, fields *CharacterHeirloomsCollectionSummaryFields) (any, error) {
+    
+	if strings.Contains(fields.Namespace, "-cn") {
+		if fields.CN == nil {
+			fields.CN = &utils.CNRequestMethod{
+				
+				Name:      fields.CharacterName,
+				
+				RealmSlug: fields.RealmSlug,
+			}
+		}
+	}
+	
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -675,6 +719,19 @@ func StringCharacterMountsCollectionSummary(ctx context.Context, fields *Charact
 
 // bridgeCharacterMountsCollectionSummary routes the request to either CN or Global logic based on input.
 func bridgeCharacterMountsCollectionSummary(ctx context.Context, fields *CharacterMountsCollectionSummaryFields) (any, error) {
+    
+	if strings.Contains(fields.Namespace, "-cn") {
+		if fields.CN == nil {
+			fields.CN = &utils.CNRequestMethod{
+				
+				Name:      fields.CharacterName,
+				
+				RealmSlug: fields.RealmSlug,
+			}
+		}
+	}
+	
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -846,6 +903,19 @@ func StringCharacterPetsCollectionSummary(ctx context.Context, fields *Character
 
 // bridgeCharacterPetsCollectionSummary routes the request to either CN or Global logic based on input.
 func bridgeCharacterPetsCollectionSummary(ctx context.Context, fields *CharacterPetsCollectionSummaryFields) (any, error) {
+    
+	if strings.Contains(fields.Namespace, "-cn") {
+		if fields.CN == nil {
+			fields.CN = &utils.CNRequestMethod{
+				
+				Name:      fields.CharacterName,
+				
+				RealmSlug: fields.RealmSlug,
+			}
+		}
+	}
+	
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -1017,6 +1087,19 @@ func StringCharacterToysCollectionSummary(ctx context.Context, fields *Character
 
 // bridgeCharacterToysCollectionSummary routes the request to either CN or Global logic based on input.
 func bridgeCharacterToysCollectionSummary(ctx context.Context, fields *CharacterToysCollectionSummaryFields) (any, error) {
+    
+	if strings.Contains(fields.Namespace, "-cn") {
+		if fields.CN == nil {
+			fields.CN = &utils.CNRequestMethod{
+				
+				Name:      fields.CharacterName,
+				
+				RealmSlug: fields.RealmSlug,
+			}
+		}
+	}
+	
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -1188,6 +1271,19 @@ func StringCharacterTransmogCollectionSummary(ctx context.Context, fields *Chara
 
 // bridgeCharacterTransmogCollectionSummary routes the request to either CN or Global logic based on input.
 func bridgeCharacterTransmogCollectionSummary(ctx context.Context, fields *CharacterTransmogCollectionSummaryFields) (any, error) {
+    
+	if strings.Contains(fields.Namespace, "-cn") {
+		if fields.CN == nil {
+			fields.CN = &utils.CNRequestMethod{
+				
+				Name:      fields.CharacterName,
+				
+				RealmSlug: fields.RealmSlug,
+			}
+		}
+	}
+	
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

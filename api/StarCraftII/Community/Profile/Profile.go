@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -139,6 +142,8 @@ func StringStatic(ctx context.Context, fields *StaticFields) (string, error) {
 
 // bridgeStatic routes the request to either CN or Global logic based on input.
 func bridgeStatic(ctx context.Context, fields *StaticFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -291,6 +296,8 @@ func StringMetadata(ctx context.Context, fields *MetadataFields) (string, error)
 
 // bridgeMetadata routes the request to either CN or Global logic based on input.
 func bridgeMetadata(ctx context.Context, fields *MetadataFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -443,6 +450,8 @@ func StringProfile(ctx context.Context, fields *ProfileFields) (string, error) {
 
 // bridgeProfile routes the request to either CN or Global logic based on input.
 func bridgeProfile(ctx context.Context, fields *ProfileFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -595,6 +604,8 @@ func StringLadderSummary(ctx context.Context, fields *LadderSummaryFields) (stri
 
 // bridgeLadderSummary routes the request to either CN or Global logic based on input.
 func bridgeLadderSummary(ctx context.Context, fields *LadderSummaryFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -749,6 +760,8 @@ func StringLadder(ctx context.Context, fields *LadderFields) (string, error) {
 
 // bridgeLadder routes the request to either CN or Global logic based on input.
 func bridgeLadder(ctx context.Context, fields *LadderFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

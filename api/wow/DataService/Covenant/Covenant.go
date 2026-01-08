@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -135,6 +138,8 @@ func StringCovenantIndex(ctx context.Context, fields *CovenantIndexFields) (stri
 
 // bridgeCovenantIndex routes the request to either CN or Global logic based on input.
 func bridgeCovenantIndex(ctx context.Context, fields *CovenantIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -298,6 +303,8 @@ func StringCovenant(ctx context.Context, fields *CovenantFields) (string, error)
 
 // bridgeCovenant routes the request to either CN or Global logic based on input.
 func bridgeCovenant(ctx context.Context, fields *CovenantFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -461,6 +468,8 @@ func StringCovenantMedia(ctx context.Context, fields *CovenantMediaFields) (stri
 
 // bridgeCovenantMedia routes the request to either CN or Global logic based on input.
 func bridgeCovenantMedia(ctx context.Context, fields *CovenantMediaFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -605,6 +614,8 @@ func StringSoulbindIndex(ctx context.Context, fields *SoulbindIndexFields) (stri
 
 // bridgeSoulbindIndex routes the request to either CN or Global logic based on input.
 func bridgeSoulbindIndex(ctx context.Context, fields *SoulbindIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -768,6 +779,8 @@ func StringSoulbind(ctx context.Context, fields *SoulbindFields) (string, error)
 
 // bridgeSoulbind routes the request to either CN or Global logic based on input.
 func bridgeSoulbind(ctx context.Context, fields *SoulbindFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -912,6 +925,8 @@ func StringConduitIndex(ctx context.Context, fields *ConduitIndexFields) (string
 
 // bridgeConduitIndex routes the request to either CN or Global logic based on input.
 func bridgeConduitIndex(ctx context.Context, fields *ConduitIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -1075,6 +1090,8 @@ func StringConduit(ctx context.Context, fields *ConduitFields) (string, error) {
 
 // bridgeConduit routes the request to either CN or Global logic based on input.
 func bridgeConduit(ctx context.Context, fields *ConduitFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

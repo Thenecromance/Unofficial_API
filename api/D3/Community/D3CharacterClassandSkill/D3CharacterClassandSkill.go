@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -144,6 +147,8 @@ func StringGetCharacterClass(ctx context.Context, fields *GetCharacterClassField
 
 // bridgeGetCharacterClass routes the request to either CN or Global logic based on input.
 func bridgeGetCharacterClass(ctx context.Context, fields *GetCharacterClassFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -304,6 +309,8 @@ func StringGetApiSkill(ctx context.Context, fields *GetApiSkillFields) (string, 
 
 // bridgeGetApiSkill routes the request to either CN or Global logic based on input.
 func bridgeGetApiSkill(ctx context.Context, fields *GetApiSkillFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

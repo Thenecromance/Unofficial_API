@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -144,6 +147,8 @@ func StringGetFollower(ctx context.Context, fields *GetFollowerFields) (string, 
 
 // bridgeGetFollower routes the request to either CN or Global logic based on input.
 func bridgeGetFollower(ctx context.Context, fields *GetFollowerFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

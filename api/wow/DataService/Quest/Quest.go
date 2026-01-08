@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -135,6 +138,8 @@ func StringQuestsIndex(ctx context.Context, fields *QuestsIndexFields) (string, 
 
 // bridgeQuestsIndex routes the request to either CN or Global logic based on input.
 func bridgeQuestsIndex(ctx context.Context, fields *QuestsIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -298,6 +303,8 @@ func StringQuest(ctx context.Context, fields *QuestFields) (string, error) {
 
 // bridgeQuest routes the request to either CN or Global logic based on input.
 func bridgeQuest(ctx context.Context, fields *QuestFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -442,6 +449,8 @@ func StringQuestCategoriesIndex(ctx context.Context, fields *QuestCategoriesInde
 
 // bridgeQuestCategoriesIndex routes the request to either CN or Global logic based on input.
 func bridgeQuestCategoriesIndex(ctx context.Context, fields *QuestCategoriesIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -606,6 +615,8 @@ func StringQuestCategory(ctx context.Context, fields *QuestCategoryFields) (stri
 
 // bridgeQuestCategory routes the request to either CN or Global logic based on input.
 func bridgeQuestCategory(ctx context.Context, fields *QuestCategoryFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -750,6 +761,8 @@ func StringQuestAreasIndex(ctx context.Context, fields *QuestAreasIndexFields) (
 
 // bridgeQuestAreasIndex routes the request to either CN or Global logic based on input.
 func bridgeQuestAreasIndex(ctx context.Context, fields *QuestAreasIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -914,6 +927,8 @@ func StringQuestArea(ctx context.Context, fields *QuestAreaFields) (string, erro
 
 // bridgeQuestArea routes the request to either CN or Global logic based on input.
 func bridgeQuestArea(ctx context.Context, fields *QuestAreaFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -1058,6 +1073,8 @@ func StringQuestTypesIndex(ctx context.Context, fields *QuestTypesIndexFields) (
 
 // bridgeQuestTypesIndex routes the request to either CN or Global logic based on input.
 func bridgeQuestTypesIndex(ctx context.Context, fields *QuestTypesIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -1222,6 +1239,8 @@ func StringQuestType(ctx context.Context, fields *QuestTypeFields) (string, erro
 
 // bridgeQuestType routes the request to either CN or Global logic based on input.
 func bridgeQuestType(ctx context.Context, fields *QuestTypeFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -113,6 +116,8 @@ func StringSeasonIndex(ctx context.Context, fields *SeasonIndexFields) (string, 
 
 // bridgeSeasonIndex routes the request to either CN or Global logic based on input.
 func bridgeSeasonIndex(ctx context.Context, fields *SeasonIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -254,6 +259,8 @@ func StringSeason(ctx context.Context, fields *SeasonFields) (string, error) {
 
 // bridgeSeason routes the request to either CN or Global logic based on input.
 func bridgeSeason(ctx context.Context, fields *SeasonFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -402,6 +409,8 @@ func StringSeasonLeaderboard(ctx context.Context, fields *SeasonLeaderboardField
 
 // bridgeSeasonLeaderboard routes the request to either CN or Global logic based on input.
 func bridgeSeasonLeaderboard(ctx context.Context, fields *SeasonLeaderboardFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -524,6 +533,8 @@ func StringEraIndex(ctx context.Context, fields *EraIndexFields) (string, error)
 
 // bridgeEraIndex routes the request to either CN or Global logic based on input.
 func bridgeEraIndex(ctx context.Context, fields *EraIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -665,6 +676,8 @@ func StringEra(ctx context.Context, fields *EraFields) (string, error) {
 
 // bridgeEra routes the request to either CN or Global logic based on input.
 func bridgeEra(ctx context.Context, fields *EraFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -813,6 +826,8 @@ func StringEraLeaderboard(ctx context.Context, fields *EraLeaderboardFields) (st
 
 // bridgeEraLeaderboard routes the request to either CN or Global logic based on input.
 func bridgeEraLeaderboard(ctx context.Context, fields *EraLeaderboardFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

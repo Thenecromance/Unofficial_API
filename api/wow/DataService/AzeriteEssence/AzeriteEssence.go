@@ -7,6 +7,11 @@ package wow_AzeriteEssence
 import (
 	"context"
 	"encoding/json"
+	
+	    "strconv"
+	
+
+	
 
 	"io"
 	"net/http"
@@ -16,8 +21,11 @@ import (
 	"Unofficial_API/global"
 	"Unofficial_API/utils"
 
+
 	"github.com/jtacoma/uritemplates"
+
 )
+
 
 // ==============================================================================================
 // API: AzeriteEssencesIndex
@@ -25,7 +33,7 @@ import (
 
 type AzeriteEssencesIndexFields struct {
 	Namespace string `form:"namespace,default=static-us"` // The namespace to use to locate this document.
-	Locale    string `form:"locale,default=en_US"`        // The locale to reflect in localized data.
+	Locale string `form:"locale,default=en_US"` // The locale to reflect in localized data.
 
 	// Extra fields for internal logic
 	ExtraFields map[any]any
@@ -56,14 +64,17 @@ func StringAzeriteEssencesIndex(ctx context.Context, fields *AzeriteEssencesInde
 	// 2. Apply Default Values (if needed for client-side logic)
 	// Note: Usually struct tags handle server-side binding,
 	// but here we might need manual checks if 0/"" are invalid for the request.
-
+	
 	if fields.Namespace == "" {
 		fields.Namespace = "static-us"
 	}
-
+	
+	
 	if fields.Locale == "" {
 		fields.Locale = "en_US"
 	}
+	
+	
 
 	// 3. Create HTTP Request
 	req, err := http.NewRequestWithContext(
@@ -81,29 +92,35 @@ func StringAzeriteEssencesIndex(ctx context.Context, fields *AzeriteEssencesInde
 
 	// 4. Resolve Path (Handle URI Bindings)
 	{
-
-		req.URL.Path = fields.Path
-
+	
+    	req.URL.Path = fields.Path
+    	
 	}
 
 	// 5. Build Query Strings
-	{
-		q := req.URL.Query()
+{
+	q := req.URL.Query()
 
-		for key, value := range fields.ExtraFields {
-			q.Add(key.(string), value.(string))
-		}
 
-		if !q.Has("namespace") {
-			q.Add("namespace", "static-us")
-		}
-
-		if !q.Has("locale") {
-			q.Add("locale", "en_US")
-		}
-
-		req.URL.RawQuery = q.Encode()
+	for key, value := range fields.ExtraFields {
+		q.Add(key.(string), value.(string))
 	}
+
+	
+    
+	if !q.Has("namespace") {
+		q.Add("namespace", "static-us")
+	}
+    
+    
+	if !q.Has("locale") {
+		q.Add("locale", "en_US")
+	}
+    
+
+
+	req.URL.RawQuery = q.Encode()
+}
 
 	// 6. Execute Request
 	cli := http.Client{}
@@ -123,9 +140,11 @@ func StringAzeriteEssencesIndex(ctx context.Context, fields *AzeriteEssencesInde
 
 // bridgeAzeriteEssencesIndex routes the request to either CN or Global logic based on input.
 func bridgeAzeriteEssencesIndex(ctx context.Context, fields *AzeriteEssencesIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
-		// Design Scheme: Check if a custom CN handler is registered at runtime.
+        // Design Scheme: Check if a custom CN handler is registered at runtime.
 		// This allows extension without modifying the template generator.
 		if CNHookAzeriteEssencesIndex != nil {
 			return CNHookAzeriteEssencesIndex(ctx, fields)
@@ -153,14 +172,15 @@ func bridgeAzeriteEssencesIndex(ctx context.Context, fields *AzeriteEssencesInde
 // Path: /data/wow/azerite-essence/index
 var AzeriteEssencesIndex = bridgeAzeriteEssencesIndex
 
+
 // ==============================================================================================
 // API: AzeriteEssence
 // ==============================================================================================
 
 type AzeriteEssenceFields struct {
 	AzeriteEssenceId string `uri:"azeriteEssenceId" binding:"required"` // The ID of the azerite essence.
-	Namespace        string `form:"namespace,default=static-us"`        // The namespace to use to locate this document.
-	Locale           string `form:"locale,default=en_US"`               // The locale to reflect in localized data.
+		Namespace string `form:"namespace,default=static-us"` // The namespace to use to locate this document.
+	Locale string `form:"locale,default=en_US"` // The locale to reflect in localized data.
 
 	// Extra fields for internal logic
 	ExtraFields map[any]any
@@ -191,18 +211,22 @@ func StringAzeriteEssence(ctx context.Context, fields *AzeriteEssenceFields) (st
 	// 2. Apply Default Values (if needed for client-side logic)
 	// Note: Usually struct tags handle server-side binding,
 	// but here we might need manual checks if 0/"" are invalid for the request.
-
+	
 	if fields.AzeriteEssenceId == "" {
 		fields.AzeriteEssenceId = "2"
 	}
-
+	
+	
 	if fields.Namespace == "" {
 		fields.Namespace = "static-us"
 	}
-
+	
+	
 	if fields.Locale == "" {
 		fields.Locale = "en_US"
 	}
+	
+	
 
 	// 3. Create HTTP Request
 	req, err := http.NewRequestWithContext(
@@ -220,42 +244,49 @@ func StringAzeriteEssence(ctx context.Context, fields *AzeriteEssenceFields) (st
 
 	// 4. Resolve Path (Handle URI Bindings)
 	{
+	
+    	tpl, err := uritemplates.Parse(fields.Path)
+    	if err != nil {
+    		return "", err
+    	}
 
-		tpl, err := uritemplates.Parse(fields.Path)
-		if err != nil {
-			return "", err
-		}
+    	pathValues := map[string]interface{}{
+    		"azeriteEssenceId": fields.AzeriteEssenceId,
+    		
+    	}
 
-		pathValues := map[string]interface{}{
-			"azeriteEssenceId": fields.AzeriteEssenceId,
-		}
-
-		expandedPath, err := tpl.Expand(pathValues)
-		if err != nil {
-			return "", err
-		}
-		req.URL.Path = expandedPath
-
+    	expandedPath, err := tpl.Expand(pathValues)
+    	if err != nil {
+    		return "", err
+    	}
+    	req.URL.Path = expandedPath
+    	
 	}
 
 	// 5. Build Query Strings
-	{
-		q := req.URL.Query()
+{
+	q := req.URL.Query()
 
-		for key, value := range fields.ExtraFields {
-			q.Add(key.(string), value.(string))
-		}
 
-		if !q.Has("namespace") {
-			q.Add("namespace", "static-us")
-		}
-
-		if !q.Has("locale") {
-			q.Add("locale", "en_US")
-		}
-
-		req.URL.RawQuery = q.Encode()
+	for key, value := range fields.ExtraFields {
+		q.Add(key.(string), value.(string))
 	}
+
+	
+    
+	if !q.Has("namespace") {
+		q.Add("namespace", "static-us")
+	}
+    
+    
+	if !q.Has("locale") {
+		q.Add("locale", "en_US")
+	}
+    
+
+
+	req.URL.RawQuery = q.Encode()
+}
 
 	// 6. Execute Request
 	cli := http.Client{}
@@ -275,9 +306,11 @@ func StringAzeriteEssence(ctx context.Context, fields *AzeriteEssenceFields) (st
 
 // bridgeAzeriteEssence routes the request to either CN or Global logic based on input.
 func bridgeAzeriteEssence(ctx context.Context, fields *AzeriteEssenceFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
-		// Design Scheme: Check if a custom CN handler is registered at runtime.
+        // Design Scheme: Check if a custom CN handler is registered at runtime.
 		// This allows extension without modifying the template generator.
 		if CNHookAzeriteEssence != nil {
 			return CNHookAzeriteEssence(ctx, fields)
@@ -305,15 +338,16 @@ func bridgeAzeriteEssence(ctx context.Context, fields *AzeriteEssenceFields) (an
 // Path: /data/wow/azerite-essence/{azeriteEssenceId}
 var AzeriteEssence = bridgeAzeriteEssence
 
+
 // ==============================================================================================
 // API: AzeriteEssenceSearch
 // ==============================================================================================
 
 type AzeriteEssenceSearchFields struct {
-	Namespace                 string `form:"namespace,default=static-us"`          // The namespace to use to locate this document.
-	Allowed_specializationsid int    `form:"allowed_specializationsid,default=65"` // The playable specialization ID that can use this essence. (example search field)
-	Orderby                   string `form:"orderby,default=name"`                 // The field to sort the result set by.
-	_page                     int    `form:"_page,default=1"`                      // The result page number.
+	Namespace string `form:"namespace,default=static-us"` // The namespace to use to locate this document.
+	Allowed_specializationsid int `form:"allowed_specializationsid,default=65"` // The playable specialization ID that can use this essence. (example search field)
+	Orderby string `form:"orderby,default=name"` // The field to sort the result set by.
+	_page int `form:"_page,default=1"` // The result page number.
 
 	// Extra fields for internal logic
 	ExtraFields map[any]any
@@ -344,6 +378,25 @@ func StringAzeriteEssenceSearch(ctx context.Context, fields *AzeriteEssenceSearc
 	// 2. Apply Default Values (if needed for client-side logic)
 	// Note: Usually struct tags handle server-side binding,
 	// but here we might need manual checks if 0/"" are invalid for the request.
+	
+	if fields.Namespace == "" {
+		fields.Namespace = "static-us"
+	}
+	
+	
+	if fields.Allowed_specializationsid == 0 {
+		fields.Allowed_specializationsid = 65
+	}
+	
+	if fields.Orderby == "" {
+		fields.Orderby = "name"
+	}
+	
+	
+	if fields._page == 0 {
+		fields._page = 1
+	}
+	
 
 	// 3. Create HTTP Request
 	req, err := http.NewRequestWithContext(
@@ -361,25 +414,45 @@ func StringAzeriteEssenceSearch(ctx context.Context, fields *AzeriteEssenceSearc
 
 	// 4. Resolve Path (Handle URI Bindings)
 	{
-
-		req.URL.Path = fields.Path
-
+	
+    	req.URL.Path = fields.Path
+    	
 	}
 
 	// 5. Build Query Strings
-	{
-		q := req.URL.Query()
+{
+	q := req.URL.Query()
 
-		for key, value := range fields.ExtraFields {
-			q.Add(key.(string), value.(string))
-		}
 
-		if !q.Has("namespace") {
-			q.Add("namespace", "static-us")
-		}
-
-		req.URL.RawQuery = q.Encode()
+	for key, value := range fields.ExtraFields {
+		q.Add(key.(string), value.(string))
 	}
+
+	
+    
+	if !q.Has("namespace") {
+		q.Add("namespace", "static-us")
+	}
+    
+    
+    	if !q.Has("allowed_specializationsid") {
+    		q.Add("allowed_specializationsid", strconv.Itoa(fields.Allowed_specializationsid))
+    	}
+    
+    
+	if !q.Has("orderby") {
+		q.Add("orderby", "name")
+	}
+    
+    
+    	if !q.Has("_page") {
+    		q.Add("_page", strconv.Itoa(fields._page))
+    	}
+    
+
+
+	req.URL.RawQuery = q.Encode()
+}
 
 	// 6. Execute Request
 	cli := http.Client{}
@@ -399,9 +472,11 @@ func StringAzeriteEssenceSearch(ctx context.Context, fields *AzeriteEssenceSearc
 
 // bridgeAzeriteEssenceSearch routes the request to either CN or Global logic based on input.
 func bridgeAzeriteEssenceSearch(ctx context.Context, fields *AzeriteEssenceSearchFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
-		// Design Scheme: Check if a custom CN handler is registered at runtime.
+        // Design Scheme: Check if a custom CN handler is registered at runtime.
 		// This allows extension without modifying the template generator.
 		if CNHookAzeriteEssenceSearch != nil {
 			return CNHookAzeriteEssenceSearch(ctx, fields)
@@ -429,14 +504,15 @@ func bridgeAzeriteEssenceSearch(ctx context.Context, fields *AzeriteEssenceSearc
 // Path: /data/wow/search/azerite-essence
 var AzeriteEssenceSearch = bridgeAzeriteEssenceSearch
 
+
 // ==============================================================================================
 // API: AzeriteEssenceMedia
 // ==============================================================================================
 
 type AzeriteEssenceMediaFields struct {
-	AzeriteEssenceId int    `uri:"azeriteEssenceId" binding:"required"` // The ID of the azerite essence.
-	Namespace        string `form:"namespace,default=static-us"`        // The namespace to use to locate this document.
-	Locale           string `form:"locale,default=en_US"`               // The locale to reflect in localized data.
+	AzeriteEssenceId int `uri:"azeriteEssenceId" binding:"required"` // The ID of the azerite essence.
+		Namespace string `form:"namespace,default=static-us"` // The namespace to use to locate this document.
+	Locale string `form:"locale,default=en_US"` // The locale to reflect in localized data.
 
 	// Extra fields for internal logic
 	ExtraFields map[any]any
@@ -467,18 +543,21 @@ func StringAzeriteEssenceMedia(ctx context.Context, fields *AzeriteEssenceMediaF
 	// 2. Apply Default Values (if needed for client-side logic)
 	// Note: Usually struct tags handle server-side binding,
 	// but here we might need manual checks if 0/"" are invalid for the request.
-
+	
 	if fields.AzeriteEssenceId == 0 {
 		fields.AzeriteEssenceId = 2
 	}
-
+	
 	if fields.Namespace == "" {
 		fields.Namespace = "static-us"
 	}
-
+	
+	
 	if fields.Locale == "" {
 		fields.Locale = "en_US"
 	}
+	
+	
 
 	// 3. Create HTTP Request
 	req, err := http.NewRequestWithContext(
@@ -496,42 +575,49 @@ func StringAzeriteEssenceMedia(ctx context.Context, fields *AzeriteEssenceMediaF
 
 	// 4. Resolve Path (Handle URI Bindings)
 	{
+	
+    	tpl, err := uritemplates.Parse(fields.Path)
+    	if err != nil {
+    		return "", err
+    	}
 
-		tpl, err := uritemplates.Parse(fields.Path)
-		if err != nil {
-			return "", err
-		}
+    	pathValues := map[string]interface{}{
+    		"azeriteEssenceId": fields.AzeriteEssenceId,
+    		
+    	}
 
-		pathValues := map[string]interface{}{
-			"azeriteEssenceId": fields.AzeriteEssenceId,
-		}
-
-		expandedPath, err := tpl.Expand(pathValues)
-		if err != nil {
-			return "", err
-		}
-		req.URL.Path = expandedPath
-
+    	expandedPath, err := tpl.Expand(pathValues)
+    	if err != nil {
+    		return "", err
+    	}
+    	req.URL.Path = expandedPath
+    	
 	}
 
 	// 5. Build Query Strings
-	{
-		q := req.URL.Query()
+{
+	q := req.URL.Query()
 
-		for key, value := range fields.ExtraFields {
-			q.Add(key.(string), value.(string))
-		}
 
-		if !q.Has("namespace") {
-			q.Add("namespace", "static-us")
-		}
-
-		if !q.Has("locale") {
-			q.Add("locale", "en_US")
-		}
-
-		req.URL.RawQuery = q.Encode()
+	for key, value := range fields.ExtraFields {
+		q.Add(key.(string), value.(string))
 	}
+
+	
+    
+	if !q.Has("namespace") {
+		q.Add("namespace", "static-us")
+	}
+    
+    
+	if !q.Has("locale") {
+		q.Add("locale", "en_US")
+	}
+    
+
+
+	req.URL.RawQuery = q.Encode()
+}
 
 	// 6. Execute Request
 	cli := http.Client{}
@@ -551,9 +637,11 @@ func StringAzeriteEssenceMedia(ctx context.Context, fields *AzeriteEssenceMediaF
 
 // bridgeAzeriteEssenceMedia routes the request to either CN or Global logic based on input.
 func bridgeAzeriteEssenceMedia(ctx context.Context, fields *AzeriteEssenceMediaFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
-		// Design Scheme: Check if a custom CN handler is registered at runtime.
+        // Design Scheme: Check if a custom CN handler is registered at runtime.
 		// This allows extension without modifying the template generator.
 		if CNHookAzeriteEssenceMedia != nil {
 			return CNHookAzeriteEssenceMedia(ctx, fields)
@@ -580,3 +668,4 @@ func bridgeAzeriteEssenceMedia(ctx context.Context, fields *AzeriteEssenceMediaF
 /* AzeriteEssenceMedia Returns media for an azerite essence by ID. */
 // Path: /data/wow/media/azerite-essence/{azeriteEssenceId}
 var AzeriteEssenceMedia = bridgeAzeriteEssenceMedia
+

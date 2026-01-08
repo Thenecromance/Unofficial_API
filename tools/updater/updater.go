@@ -130,11 +130,12 @@ func GenerateApi(pkgName string, folder string, apiList []*ApiGroup) {
 		filePath := filepath.Join(folder, apiGroup.ApiGroupName, apiGroup.ApiGroupName+".go")
 
 		data := map[string]any{
-			"PkgName":       pkgName,
-			"ApiGroupName":  apiGroup.ApiGroupName,
-			"Apis":          apiGroup.Apis,
-			"NeedStrconv":   apiGroup.NeedStrconv(), // Change: Call the method explicitly
-			"HasURIBinding": apiGroup.HasURIBinding(),
+			"PkgName":            pkgName,
+			"ApiGroupName":       apiGroup.ApiGroupName,
+			"Apis":               apiGroup.Apis,
+			"NeedStrconv":        apiGroup.NeedStrconv(), // Change: Call the method explicitly
+			"HasURIBinding":      apiGroup.HasURIBinding(),
+			"ProcessChineseData": apiGroup.ProcessChineseData(),
 		}
 
 		if err := writeFile(filePath, t, data); err != nil {

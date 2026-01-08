@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -135,6 +138,8 @@ func StringTechTalentTreeIndex(ctx context.Context, fields *TechTalentTreeIndexF
 
 // bridgeTechTalentTreeIndex routes the request to either CN or Global logic based on input.
 func bridgeTechTalentTreeIndex(ctx context.Context, fields *TechTalentTreeIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -298,6 +303,8 @@ func StringTechTalentTree(ctx context.Context, fields *TechTalentTreeFields) (st
 
 // bridgeTechTalentTree routes the request to either CN or Global logic based on input.
 func bridgeTechTalentTree(ctx context.Context, fields *TechTalentTreeFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -442,6 +449,8 @@ func StringTechTalentIndex(ctx context.Context, fields *TechTalentIndexFields) (
 
 // bridgeTechTalentIndex routes the request to either CN or Global logic based on input.
 func bridgeTechTalentIndex(ctx context.Context, fields *TechTalentIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -605,6 +614,8 @@ func StringTechTalent(ctx context.Context, fields *TechTalentFields) (string, er
 
 // bridgeTechTalent routes the request to either CN or Global logic based on input.
 func bridgeTechTalent(ctx context.Context, fields *TechTalentFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -768,6 +779,8 @@ func StringTechTalentMedia(ctx context.Context, fields *TechTalentMediaFields) (
 
 // bridgeTechTalentMedia routes the request to either CN or Global logic based on input.
 func bridgeTechTalentMedia(ctx context.Context, fields *TechTalentMediaFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

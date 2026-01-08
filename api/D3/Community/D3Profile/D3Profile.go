@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -139,6 +142,8 @@ func StringGetApiAccount(ctx context.Context, fields *GetApiAccountFields) (stri
 
 // bridgeGetApiAccount routes the request to either CN or Global logic based on input.
 func bridgeGetApiAccount(ctx context.Context, fields *GetApiAccountFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -289,6 +294,8 @@ func StringGetApiHero(ctx context.Context, fields *GetApiHeroFields) (string, er
 
 // bridgeGetApiHero routes the request to either CN or Global logic based on input.
 func bridgeGetApiHero(ctx context.Context, fields *GetApiHeroFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -439,6 +446,8 @@ func StringGetApiDetailedHeroItems(ctx context.Context, fields *GetApiDetailedHe
 
 // bridgeGetApiDetailedHeroItems routes the request to either CN or Global logic based on input.
 func bridgeGetApiDetailedHeroItems(ctx context.Context, fields *GetApiDetailedHeroItemsFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -589,6 +598,8 @@ func StringGetApiDetailedFollowerItems(ctx context.Context, fields *GetApiDetail
 
 // bridgeGetApiDetailedFollowerItems routes the request to either CN or Global logic based on input.
 func bridgeGetApiDetailedFollowerItems(ctx context.Context, fields *GetApiDetailedFollowerItemsFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

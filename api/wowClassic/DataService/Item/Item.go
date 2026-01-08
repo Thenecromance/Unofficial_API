@@ -10,6 +10,9 @@ import (
 	
 	    "strconv"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -137,6 +140,8 @@ func StringItemClassesIndex(ctx context.Context, fields *ItemClassesIndexFields)
 
 // bridgeItemClassesIndex routes the request to either CN or Global logic based on input.
 func bridgeItemClassesIndex(ctx context.Context, fields *ItemClassesIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -301,6 +306,8 @@ func StringItemClass(ctx context.Context, fields *ItemClassFields) (string, erro
 
 // bridgeItemClass routes the request to either CN or Global logic based on input.
 func bridgeItemClass(ctx context.Context, fields *ItemClassFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -472,6 +479,8 @@ func StringItemSubclass(ctx context.Context, fields *ItemSubclassFields) (string
 
 // bridgeItemSubclass routes the request to either CN or Global logic based on input.
 func bridgeItemSubclass(ctx context.Context, fields *ItemSubclassFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -636,6 +645,8 @@ func StringItem(ctx context.Context, fields *ItemFields) (string, error) {
 
 // bridgeItem routes the request to either CN or Global logic based on input.
 func bridgeItem(ctx context.Context, fields *ItemFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -799,6 +810,8 @@ func StringItemMedia(ctx context.Context, fields *ItemMediaFields) (string, erro
 
 // bridgeItemMedia routes the request to either CN or Global logic based on input.
 func bridgeItemMedia(ctx context.Context, fields *ItemMediaFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -964,6 +977,8 @@ func StringItemSearch(ctx context.Context, fields *ItemSearchFields) (string, er
 
 // bridgeItemSearch routes the request to either CN or Global logic based on input.
 func bridgeItemSearch(ctx context.Context, fields *ItemSearchFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

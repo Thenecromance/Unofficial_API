@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -135,6 +138,8 @@ func StringTitlesIndex(ctx context.Context, fields *TitlesIndexFields) (string, 
 
 // bridgeTitlesIndex routes the request to either CN or Global logic based on input.
 func bridgeTitlesIndex(ctx context.Context, fields *TitlesIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -298,6 +303,8 @@ func StringTitle(ctx context.Context, fields *TitleFields) (string, error) {
 
 // bridgeTitle routes the request to either CN or Global logic based on input.
 func bridgeTitle(ctx context.Context, fields *TitleFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

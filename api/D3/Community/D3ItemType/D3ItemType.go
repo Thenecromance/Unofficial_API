@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -124,6 +127,8 @@ func StringGetItemTypeIndex(ctx context.Context, fields *GetItemTypeIndexFields)
 
 // bridgeGetItemTypeIndex routes the request to either CN or Global logic based on input.
 func bridgeGetItemTypeIndex(ctx context.Context, fields *GetItemTypeIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -277,6 +282,8 @@ func StringGetItemType(ctx context.Context, fields *GetItemTypeFields) (string, 
 
 // bridgeGetItemType routes the request to either CN or Global logic based on input.
 func bridgeGetItemType(ctx context.Context, fields *GetItemTypeFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

@@ -10,6 +10,9 @@ import (
 	
 	    "strconv"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -137,6 +140,8 @@ func StringCreatureFamiliesIndex(ctx context.Context, fields *CreatureFamiliesIn
 
 // bridgeCreatureFamiliesIndex routes the request to either CN or Global logic based on input.
 func bridgeCreatureFamiliesIndex(ctx context.Context, fields *CreatureFamiliesIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -300,6 +305,8 @@ func StringCreatureFamily(ctx context.Context, fields *CreatureFamilyFields) (st
 
 // bridgeCreatureFamily routes the request to either CN or Global logic based on input.
 func bridgeCreatureFamily(ctx context.Context, fields *CreatureFamilyFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -444,6 +451,8 @@ func StringCreatureTypesIndex(ctx context.Context, fields *CreatureTypesIndexFie
 
 // bridgeCreatureTypesIndex routes the request to either CN or Global logic based on input.
 func bridgeCreatureTypesIndex(ctx context.Context, fields *CreatureTypesIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -607,6 +616,8 @@ func StringCreatureType(ctx context.Context, fields *CreatureTypeFields) (string
 
 // bridgeCreatureType routes the request to either CN or Global logic based on input.
 func bridgeCreatureType(ctx context.Context, fields *CreatureTypeFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -770,6 +781,8 @@ func StringCreature(ctx context.Context, fields *CreatureFields) (string, error)
 
 // bridgeCreature routes the request to either CN or Global logic based on input.
 func bridgeCreature(ctx context.Context, fields *CreatureFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -935,6 +948,8 @@ func StringCreatureSearch(ctx context.Context, fields *CreatureSearchFields) (st
 
 // bridgeCreatureSearch routes the request to either CN or Global logic based on input.
 func bridgeCreatureSearch(ctx context.Context, fields *CreatureSearchFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -1098,6 +1113,8 @@ func StringCreatureDisplayMedia(ctx context.Context, fields *CreatureDisplayMedi
 
 // bridgeCreatureDisplayMedia routes the request to either CN or Global logic based on input.
 func bridgeCreatureDisplayMedia(ctx context.Context, fields *CreatureDisplayMediaFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -1261,6 +1278,8 @@ func StringCreatureFamilyMedia(ctx context.Context, fields *CreatureFamilyMediaF
 
 // bridgeCreatureFamilyMedia routes the request to either CN or Global logic based on input.
 func bridgeCreatureFamilyMedia(ctx context.Context, fields *CreatureFamilyMediaFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

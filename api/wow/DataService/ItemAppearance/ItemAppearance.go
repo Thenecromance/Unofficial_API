@@ -10,6 +10,9 @@ import (
 	
 	    "strconv"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -157,6 +160,8 @@ func StringItemAppearance(ctx context.Context, fields *ItemAppearanceFields) (st
 
 // bridgeItemAppearance routes the request to either CN or Global logic based on input.
 func bridgeItemAppearance(ctx context.Context, fields *ItemAppearanceFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -322,6 +327,8 @@ func StringItemAppearanceSearch(ctx context.Context, fields *ItemAppearanceSearc
 
 // bridgeItemAppearanceSearch routes the request to either CN or Global logic based on input.
 func bridgeItemAppearanceSearch(ctx context.Context, fields *ItemAppearanceSearchFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -466,6 +473,8 @@ func StringItemAppearanceSetsIndex(ctx context.Context, fields *ItemAppearanceSe
 
 // bridgeItemAppearanceSetsIndex routes the request to either CN or Global logic based on input.
 func bridgeItemAppearanceSetsIndex(ctx context.Context, fields *ItemAppearanceSetsIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -629,6 +638,8 @@ func StringItemAppearanceSet(ctx context.Context, fields *ItemAppearanceSetField
 
 // bridgeItemAppearanceSet routes the request to either CN or Global logic based on input.
 func bridgeItemAppearanceSet(ctx context.Context, fields *ItemAppearanceSetFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -773,6 +784,8 @@ func StringItemAppearanceSlotIndex(ctx context.Context, fields *ItemAppearanceSl
 
 // bridgeItemAppearanceSlotIndex routes the request to either CN or Global logic based on input.
 func bridgeItemAppearanceSlotIndex(ctx context.Context, fields *ItemAppearanceSlotIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -937,6 +950,8 @@ func StringItemAppearanceSlot(ctx context.Context, fields *ItemAppearanceSlotFie
 
 // bridgeItemAppearanceSlot routes the request to either CN or Global logic based on input.
 func bridgeItemAppearanceSlot(ctx context.Context, fields *ItemAppearanceSlotFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

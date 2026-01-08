@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -135,6 +138,8 @@ func StringPvPSeasonsIndex(ctx context.Context, fields *PvPSeasonsIndexFields) (
 
 // bridgePvPSeasonsIndex routes the request to either CN or Global logic based on input.
 func bridgePvPSeasonsIndex(ctx context.Context, fields *PvPSeasonsIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -298,6 +303,8 @@ func StringPvPSeason(ctx context.Context, fields *PvPSeasonFields) (string, erro
 
 // bridgePvPSeason routes the request to either CN or Global logic based on input.
 func bridgePvPSeason(ctx context.Context, fields *PvPSeasonFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -461,6 +468,8 @@ func StringPvPLeaderboardsIndex(ctx context.Context, fields *PvPLeaderboardsInde
 
 // bridgePvPLeaderboardsIndex routes the request to either CN or Global logic based on input.
 func bridgePvPLeaderboardsIndex(ctx context.Context, fields *PvPLeaderboardsIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -631,6 +640,8 @@ func StringPvPLeaderboard(ctx context.Context, fields *PvPLeaderboardFields) (st
 
 // bridgePvPLeaderboard routes the request to either CN or Global logic based on input.
 func bridgePvPLeaderboard(ctx context.Context, fields *PvPLeaderboardFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -794,6 +805,8 @@ func StringPvPRewardsIndex(ctx context.Context, fields *PvPRewardsIndexFields) (
 
 // bridgePvPRewardsIndex routes the request to either CN or Global logic based on input.
 func bridgePvPRewardsIndex(ctx context.Context, fields *PvPRewardsIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

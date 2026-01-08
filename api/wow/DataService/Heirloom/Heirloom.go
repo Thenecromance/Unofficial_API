@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -135,6 +138,8 @@ func StringHeirloomIndex(ctx context.Context, fields *HeirloomIndexFields) (stri
 
 // bridgeHeirloomIndex routes the request to either CN or Global logic based on input.
 func bridgeHeirloomIndex(ctx context.Context, fields *HeirloomIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -298,6 +303,8 @@ func StringHeirloom(ctx context.Context, fields *HeirloomFields) (string, error)
 
 // bridgeHeirloom routes the request to either CN or Global logic based on input.
 func bridgeHeirloom(ctx context.Context, fields *HeirloomFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

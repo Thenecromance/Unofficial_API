@@ -10,6 +10,9 @@ import (
 	
 	    "strconv"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -137,6 +140,8 @@ func StringConnectedRealmsIndex(ctx context.Context, fields *ConnectedRealmsInde
 
 // bridgeConnectedRealmsIndex routes the request to either CN or Global logic based on input.
 func bridgeConnectedRealmsIndex(ctx context.Context, fields *ConnectedRealmsIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -300,6 +305,8 @@ func StringConnectedRealm(ctx context.Context, fields *ConnectedRealmFields) (st
 
 // bridgeConnectedRealm routes the request to either CN or Global logic based on input.
 func bridgeConnectedRealm(ctx context.Context, fields *ConnectedRealmFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -476,6 +483,8 @@ func StringConnectedRealmSearch(ctx context.Context, fields *ConnectedRealmSearc
 
 // bridgeConnectedRealmSearch routes the request to either CN or Global logic based on input.
 func bridgeConnectedRealmSearch(ctx context.Context, fields *ConnectedRealmSearchFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

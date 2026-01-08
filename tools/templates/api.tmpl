@@ -10,6 +10,11 @@ import (
 	{{if .NeedStrconv}}
 	    "strconv"
 	{{end}}
+
+	{{if .ProcessChineseData}}
+	    "strings"
+    {{end}}
+
 	"io"
 	"net/http"
 
@@ -154,6 +159,21 @@ func String{{.Name}}(ctx context.Context, fields *{{.Name}}Fields) (string, erro
 
 // bridge{{.Name}} routes the request to either CN or Global logic based on input.
 func bridge{{.Name}}(ctx context.Context, fields *{{.Name}}Fields) (any, error) {
+    {{if .ProcessChineseData}}
+	if strings.Contains(fields.Namespace, "-cn") {
+		if fields.CN == nil {
+			fields.CN = &utils.CNRequestMethod{
+				{{if .IsGuild}}
+				Name:      fields.NameSlug,
+				{{else}}
+				Name:      fields.CharacterName,
+				{{end}}
+				RealmSlug: fields.RealmSlug,
+			}
+		}
+	}
+	{{end}}
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

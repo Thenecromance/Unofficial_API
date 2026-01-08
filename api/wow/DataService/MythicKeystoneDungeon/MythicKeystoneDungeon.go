@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -135,6 +138,8 @@ func StringMythicKeystoneIndex(ctx context.Context, fields *MythicKeystoneIndexF
 
 // bridgeMythicKeystoneIndex routes the request to either CN or Global logic based on input.
 func bridgeMythicKeystoneIndex(ctx context.Context, fields *MythicKeystoneIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -279,6 +284,8 @@ func StringMythicKeystoneDungeonsIndex(ctx context.Context, fields *MythicKeysto
 
 // bridgeMythicKeystoneDungeonsIndex routes the request to either CN or Global logic based on input.
 func bridgeMythicKeystoneDungeonsIndex(ctx context.Context, fields *MythicKeystoneDungeonsIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -442,6 +449,8 @@ func StringMythicKeystoneDungeon(ctx context.Context, fields *MythicKeystoneDung
 
 // bridgeMythicKeystoneDungeon routes the request to either CN or Global logic based on input.
 func bridgeMythicKeystoneDungeon(ctx context.Context, fields *MythicKeystoneDungeonFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -586,6 +595,8 @@ func StringMythicKeystonePeriodsIndex(ctx context.Context, fields *MythicKeyston
 
 // bridgeMythicKeystonePeriodsIndex routes the request to either CN or Global logic based on input.
 func bridgeMythicKeystonePeriodsIndex(ctx context.Context, fields *MythicKeystonePeriodsIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -749,6 +760,8 @@ func StringMythicKeystonePeriod(ctx context.Context, fields *MythicKeystonePerio
 
 // bridgeMythicKeystonePeriod routes the request to either CN or Global logic based on input.
 func bridgeMythicKeystonePeriod(ctx context.Context, fields *MythicKeystonePeriodFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -893,6 +906,8 @@ func StringMythicKeystoneSeasonsIndex(ctx context.Context, fields *MythicKeyston
 
 // bridgeMythicKeystoneSeasonsIndex routes the request to either CN or Global logic based on input.
 func bridgeMythicKeystoneSeasonsIndex(ctx context.Context, fields *MythicKeystoneSeasonsIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -1056,6 +1071,8 @@ func StringMythicKeystoneSeason(ctx context.Context, fields *MythicKeystoneSeaso
 
 // bridgeMythicKeystoneSeason routes the request to either CN or Global logic based on input.
 func bridgeMythicKeystoneSeason(ctx context.Context, fields *MythicKeystoneSeasonFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

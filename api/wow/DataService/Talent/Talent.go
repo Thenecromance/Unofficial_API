@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -135,6 +138,8 @@ func StringTalentTreeIndex(ctx context.Context, fields *TalentTreeIndexFields) (
 
 // bridgeTalentTreeIndex routes the request to either CN or Global logic based on input.
 func bridgeTalentTreeIndex(ctx context.Context, fields *TalentTreeIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -304,6 +309,8 @@ func StringTalentTree(ctx context.Context, fields *TalentTreeFields) (string, er
 
 // bridgeTalentTree routes the request to either CN or Global logic based on input.
 func bridgeTalentTree(ctx context.Context, fields *TalentTreeFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -467,6 +474,8 @@ func StringTalentTreeNodes(ctx context.Context, fields *TalentTreeNodesFields) (
 
 // bridgeTalentTreeNodes routes the request to either CN or Global logic based on input.
 func bridgeTalentTreeNodes(ctx context.Context, fields *TalentTreeNodesFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -611,6 +620,8 @@ func StringTalentsIndex(ctx context.Context, fields *TalentsIndexFields) (string
 
 // bridgeTalentsIndex routes the request to either CN or Global logic based on input.
 func bridgeTalentsIndex(ctx context.Context, fields *TalentsIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -774,6 +785,8 @@ func StringTalent(ctx context.Context, fields *TalentFields) (string, error) {
 
 // bridgeTalent routes the request to either CN or Global logic based on input.
 func bridgeTalent(ctx context.Context, fields *TalentFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -918,6 +931,8 @@ func StringPvPTalentsIndex(ctx context.Context, fields *PvPTalentsIndexFields) (
 
 // bridgePvPTalentsIndex routes the request to either CN or Global logic based on input.
 func bridgePvPTalentsIndex(ctx context.Context, fields *PvPTalentsIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -1081,6 +1096,8 @@ func StringPvPTalent(ctx context.Context, fields *PvPTalentFields) (string, erro
 
 // bridgePvPTalent routes the request to either CN or Global logic based on input.
 func bridgePvPTalent(ctx context.Context, fields *PvPTalentFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

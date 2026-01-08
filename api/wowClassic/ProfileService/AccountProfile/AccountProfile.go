@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -135,6 +138,8 @@ func StringAccountProfileSummary(ctx context.Context, fields *AccountProfileSumm
 
 // bridgeAccountProfileSummary routes the request to either CN or Global logic based on input.
 func bridgeAccountProfileSummary(ctx context.Context, fields *AccountProfileSummaryFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -304,6 +309,8 @@ func StringProtectedCharacterProfileSummary(ctx context.Context, fields *Protect
 
 // bridgeProtectedCharacterProfileSummary routes the request to either CN or Global logic based on input.
 func bridgeProtectedCharacterProfileSummary(ctx context.Context, fields *ProtectedCharacterProfileSummaryFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

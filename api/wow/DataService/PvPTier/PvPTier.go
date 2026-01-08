@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -135,6 +138,8 @@ func StringPvPTiersIndex(ctx context.Context, fields *PvPTiersIndexFields) (stri
 
 // bridgePvPTiersIndex routes the request to either CN or Global logic based on input.
 func bridgePvPTiersIndex(ctx context.Context, fields *PvPTiersIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -298,6 +303,8 @@ func StringPvPTier(ctx context.Context, fields *PvPTierFields) (string, error) {
 
 // bridgePvPTier routes the request to either CN or Global logic based on input.
 func bridgePvPTier(ctx context.Context, fields *PvPTierFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -461,6 +468,8 @@ func StringPvPTierMedia(ctx context.Context, fields *PvPTierMediaFields) (string
 
 // bridgePvPTierMedia routes the request to either CN or Global logic based on input.
 func bridgePvPTierMedia(ctx context.Context, fields *PvPTierMediaFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

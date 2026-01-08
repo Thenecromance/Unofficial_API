@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -128,6 +131,8 @@ func StringGrandmasterLeaderboard(ctx context.Context, fields *GrandmasterLeader
 
 // bridgeGrandmasterLeaderboard routes the request to either CN or Global logic based on input.
 func bridgeGrandmasterLeaderboard(ctx context.Context, fields *GrandmasterLeaderboardFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -265,6 +270,8 @@ func StringSeason(ctx context.Context, fields *SeasonFields) (string, error) {
 
 // bridgeSeason routes the request to either CN or Global logic based on input.
 func bridgeSeason(ctx context.Context, fields *SeasonFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

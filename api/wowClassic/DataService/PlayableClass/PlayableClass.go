@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -135,6 +138,8 @@ func StringPlayableClassesIndex(ctx context.Context, fields *PlayableClassesInde
 
 // bridgePlayableClassesIndex routes the request to either CN or Global logic based on input.
 func bridgePlayableClassesIndex(ctx context.Context, fields *PlayableClassesIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -298,6 +303,8 @@ func StringPlayableClass(ctx context.Context, fields *PlayableClassFields) (stri
 
 // bridgePlayableClass routes the request to either CN or Global logic based on input.
 func bridgePlayableClass(ctx context.Context, fields *PlayableClassFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -461,6 +468,8 @@ func StringPlayableClassMedia(ctx context.Context, fields *PlayableClassMediaFie
 
 // bridgePlayableClassMedia routes the request to either CN or Global logic based on input.
 func bridgePlayableClassMedia(ctx context.Context, fields *PlayableClassMediaFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

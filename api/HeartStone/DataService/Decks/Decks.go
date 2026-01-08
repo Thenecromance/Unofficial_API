@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -145,6 +148,8 @@ func StringGetdeckbycode(ctx context.Context, fields *GetdeckbycodeFields) (stri
 
 // bridgeGetdeckbycode routes the request to either CN or Global logic based on input.
 func bridgeGetdeckbycode(ctx context.Context, fields *GetdeckbycodeFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -306,6 +311,8 @@ func StringGetdeckbycardlist(ctx context.Context, fields *GetdeckbycardlistField
 
 // bridgeGetdeckbycardlist routes the request to either CN or Global logic based on input.
 func bridgeGetdeckbycardlist(ctx context.Context, fields *GetdeckbycardlistFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

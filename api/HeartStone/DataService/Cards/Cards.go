@@ -10,6 +10,9 @@ import (
 	
 	    "strconv"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -210,6 +213,8 @@ func StringCardsearch(ctx context.Context, fields *CardsearchFields) (string, er
 
 // bridgeCardsearch routes the request to either CN or Global logic based on input.
 func bridgeCardsearch(ctx context.Context, fields *CardsearchFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -498,6 +503,8 @@ func StringDetailedcardsearchexample(ctx context.Context, fields *Detailedcardse
 
 // bridgeDetailedcardsearchexample routes the request to either CN or Global logic based on input.
 func bridgeDetailedcardsearchexample(ctx context.Context, fields *DetailedcardsearchexampleFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -693,6 +700,8 @@ func StringBattlegroundscardsearch(ctx context.Context, fields *Battlegroundscar
 
 // bridgeBattlegroundscardsearch routes the request to either CN or Global logic based on input.
 func bridgeBattlegroundscardsearch(ctx context.Context, fields *BattlegroundscardsearchFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -885,6 +894,8 @@ func StringMercenariescardsearch(ctx context.Context, fields *Mercenariescardsea
 
 // bridgeMercenariescardsearch routes the request to either CN or Global logic based on input.
 func bridgeMercenariescardsearch(ctx context.Context, fields *MercenariescardsearchFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -1044,6 +1055,8 @@ func StringFetchonecard(ctx context.Context, fields *FetchonecardFields) (string
 
 // bridgeFetchonecard routes the request to either CN or Global logic based on input.
 func bridgeFetchonecard(ctx context.Context, fields *FetchonecardFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

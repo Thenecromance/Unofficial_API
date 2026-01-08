@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -135,6 +138,8 @@ func StringToyIndex(ctx context.Context, fields *ToyIndexFields) (string, error)
 
 // bridgeToyIndex routes the request to either CN or Global logic based on input.
 func bridgeToyIndex(ctx context.Context, fields *ToyIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -298,6 +303,8 @@ func StringToy(ctx context.Context, fields *ToyFields) (string, error) {
 
 // bridgeToy routes the request to either CN or Global logic based on input.
 func bridgeToy(ctx context.Context, fields *ToyFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

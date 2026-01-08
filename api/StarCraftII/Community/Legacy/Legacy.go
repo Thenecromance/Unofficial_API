@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -132,6 +135,8 @@ func StringProfile(ctx context.Context, fields *ProfileFields) (string, error) {
 
 // bridgeProfile routes the request to either CN or Global logic based on input.
 func bridgeProfile(ctx context.Context, fields *ProfileFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -273,6 +278,8 @@ func StringLadders(ctx context.Context, fields *LaddersFields) (string, error) {
 
 // bridgeLadders routes the request to either CN or Global logic based on input.
 func bridgeLadders(ctx context.Context, fields *LaddersFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -414,6 +421,8 @@ func StringMatchHistory(ctx context.Context, fields *MatchHistoryFields) (string
 
 // bridgeMatchHistory routes the request to either CN or Global logic based on input.
 func bridgeMatchHistory(ctx context.Context, fields *MatchHistoryFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -553,6 +562,8 @@ func StringLadder(ctx context.Context, fields *LadderFields) (string, error) {
 
 // bridgeLadder routes the request to either CN or Global logic based on input.
 func bridgeLadder(ctx context.Context, fields *LadderFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -690,6 +701,8 @@ func StringAchievements(ctx context.Context, fields *AchievementsFields) (string
 
 // bridgeAchievements routes the request to either CN or Global logic based on input.
 func bridgeAchievements(ctx context.Context, fields *AchievementsFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -827,6 +840,8 @@ func StringRewards(ctx context.Context, fields *RewardsFields) (string, error) {
 
 // bridgeRewards routes the request to either CN or Global logic based on input.
 func bridgeRewards(ctx context.Context, fields *RewardsFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

@@ -8,6 +8,11 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+	    "strings"
+    
+
 	"io"
 	"net/http"
 
@@ -162,6 +167,19 @@ func StringCharacterProfileSummary(ctx context.Context, fields *CharacterProfile
 
 // bridgeCharacterProfileSummary routes the request to either CN or Global logic based on input.
 func bridgeCharacterProfileSummary(ctx context.Context, fields *CharacterProfileSummaryFields) (any, error) {
+    
+	if strings.Contains(fields.Namespace, "-cn") {
+		if fields.CN == nil {
+			fields.CN = &utils.CNRequestMethod{
+				
+				Name:      fields.CharacterName,
+				
+				RealmSlug: fields.RealmSlug,
+			}
+		}
+	}
+	
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -333,6 +351,19 @@ func StringCharacterProfileStatus(ctx context.Context, fields *CharacterProfileS
 
 // bridgeCharacterProfileStatus routes the request to either CN or Global logic based on input.
 func bridgeCharacterProfileStatus(ctx context.Context, fields *CharacterProfileStatusFields) (any, error) {
+    
+	if strings.Contains(fields.Namespace, "-cn") {
+		if fields.CN == nil {
+			fields.CN = &utils.CNRequestMethod{
+				
+				Name:      fields.CharacterName,
+				
+				RealmSlug: fields.RealmSlug,
+			}
+		}
+	}
+	
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.

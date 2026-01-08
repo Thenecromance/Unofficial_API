@@ -8,6 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	
+
+	
+
 	"io"
 	"net/http"
 
@@ -135,6 +138,8 @@ func StringRegionsIndex(ctx context.Context, fields *RegionsIndexFields) (string
 
 // bridgeRegionsIndex routes the request to either CN or Global logic based on input.
 func bridgeRegionsIndex(ctx context.Context, fields *RegionsIndexFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
@@ -298,6 +303,8 @@ func StringRegion(ctx context.Context, fields *RegionFields) (string, error) {
 
 // bridgeRegion routes the request to either CN or Global logic based on input.
 func bridgeRegion(ctx context.Context, fields *RegionFields) (any, error) {
+    
+
 	// 1. If CN specific parameters are present, use CN logic
 	if fields.CN != nil {
         // Design Scheme: Check if a custom CN handler is registered at runtime.
