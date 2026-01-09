@@ -4,7 +4,21 @@
 
 This project is an **Unofficial Go SDK and Proxy Server** for Blizzard games. It provides comprehensive type-safe structs and methods to interact with Blizzard APIs, and also includes a Gin-based web server that acts as a proxy/gateway.
 
+> **Dark side**: This project was initially intended to integrate the unpublicized web API of the China region and eventually convert it into the same data structure.
+
 > **Disclaimer**: This project is an unofficial API wrapper and is not affiliated with, endorsed, sponsored, or specifically approved by Blizzard Entertainment, Inc.
+
+
+## Known issues
+- All Search API is not working properly due to implementation.
+- All China region APIs are temporarily removed.
+- '/heartstone/cards' in routers will register duplicate route error.(I know how to fix this issue, but so far just use
+  hand to delete them)
+- '/heartstone/decks' in routers will register duplicate route error.(I know how to fix this issue, but so far just use
+  hand to delete them)
+- No Response Error handling system yet.
+- Why some apis don't have model struct? Sadly, I'm living in China now, and many games I don't have account to test, so
+  I just skip them.( like: wow/profileService, scII, etc.)
 
 ## 🚀 Features
 
@@ -114,8 +128,3 @@ func main() {
 ## License
 
 [MIT](LICENSE)
-
-
-## Known issues
-- All Search API is not working properly due to implementation.
-- All China region APIs are temporarily removed.

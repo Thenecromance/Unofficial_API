@@ -97,16 +97,16 @@ func updateApi(f *Fields) {
 
 func main() {
 	updateApi(&Fields{
-		Api:    true,
-		Model:  false,
-		Router: true,
+		Api:    true,  // Generate API functions
+		Model:  false, // Generate Data Models
+		Router: true,  // Generate Router Mappings (so far only support gin)
 
-		Wow:        true,
-		Classic:    true,
-		D3:         true,
-		HeartStone: true,
-		SC2:        true,
+		Wow:        true, // Generate WoW Retail APIs
+		Classic:    true, // Generate WoW Classic APIs
+		D3:         true, // Generate Diablo 3 APIs
+		HeartStone: true, // Generate HearthStone APIs
+		SC2:        true, // Generate StarCraft II APIs
 
-		LocalPath: "./api_collection.json",
+		LocalPath: "./api_collection.json", // store all API info to a local file, if it is empty, app will not store these datas
 	})
 }
