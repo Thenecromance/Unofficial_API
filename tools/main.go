@@ -5,6 +5,8 @@ import (
 	"os"
 	"sync"
 
+	"github.com/Thenecromance/BlizzardAPI/bridge/log"
+	"github.com/Thenecromance/BlizzardAPI/tools/postmanconverter"
 	"github.com/Thenecromance/BlizzardAPI/tools/updater"
 )
 
@@ -19,7 +21,8 @@ type Fields struct {
 	HeartStone bool
 	SC2        bool
 
-	LocalPath string
+	LocalPath   string
+	PostManFile string
 }
 
 func updateApi(f *Fields) {
@@ -76,21 +79,35 @@ func updateApi(f *Fields) {
 		outPath := "../api/" + task.Game + "/" + task.Category + "/"
 
 		if f.Api && task.Enabled {
+			log.Infof("Generating %s API functions...", task.Game)
 			updater.GenerateApi(task.Game, outPath, task.Result)
 		}
 
 		if f.Model && task.Enabled {
+			log.Infof("Generating %s Data Models...", task.Game)
 			updater.GenerateModels(task.Game, outPath, task.Result)
 		}
 	}
 
 	if f.Router {
+		log.Info("Generating Router Mappings...")
 		updater.GenerateRouters("routers", "../routers/", collection)
 	}
 
 	if len(f.LocalPath) > 0 {
+		log.Infof("Storing API info to %s ...", f.LocalPath)
 		buf, _ := json.MarshalIndent(collection, "", "  ")
 		os.WriteFile(f.LocalPath, buf, 0644)
+	}
+
+	if len(f.PostManFile) > 0 {
+		log.Infof("Generating PostMan Collection file %s ...", f.PostManFile)
+		result := postmanconverter.GeneratePostManCollection(collection)
+		jStr, err := json.MarshalIndent(result, "", "  ")
+		if err != nil {
+			panic(err)
+		}
+		os.WriteFile(f.PostManFile, jStr, 0644)
 	}
 
 }
@@ -99,14 +116,15 @@ func main() {
 	updateApi(&Fields{
 		Api:    false, // Generate API functions
 		Model:  false, // Generate Data Models
-		Router: true,  // Generate Router Mappings (so far only support gin)
+		Router: false, // Generate Router Mappings (so far only support gin)
 
-		Wow:        true,  // Generate WoW Retail APIs
-		Classic:    false, // Generate WoW Classic APIs
-		D3:         true,  // Generate Diablo 3 APIs
-		HeartStone: true,  // Generate HearthStone APIs
-		SC2:        true,  // Generate StarCraft II APIs
+		Wow:        true, // Generate WoW Retail APIs
+		Classic:    true, // Generate WoW Classic APIs
+		D3:         true, // Generate Diablo 3 APIs
+		HeartStone: true, // Generate HearthStone APIs
+		SC2:        true, // Generate StarCraft II APIs
 
-		LocalPath: "./api_collection.json", // store all API info to a local file, if it is empty, app will not store these datas
+		LocalPath:   "./api_collection.json", // store all API info to a local file, if it is empty, app will not store these datas
+		PostManFile: "./pm.auto_gen.json",    // Generate PostMan Collection file, if it is empty, app will not generate this file
 	})
 }
